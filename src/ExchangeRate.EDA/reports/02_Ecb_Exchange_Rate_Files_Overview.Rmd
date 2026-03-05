@@ -1,0 +1,97 @@
+---
+title: "ECB Exchange Rates – Overview (EDA & ROCCC)"
+subtitle: "EUR/USD and EUR/CNY – Data Quality, Profiling Summary and Readiness"
+author: "sferrer"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+lang: fr
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    df_print: paged
+    theme: cosmo
+    highlight: tango
+    code_folding: none
+---
+
+```{r setup, include=FALSE}
+# Global chunk options
+knitr::opts_chunk$set(
+	echo = FALSE,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+## EDA Overview
+
+### Objectif du rapport
+
+Ce document fournit une synthèse “Overview” des résultats de **profiling** et d’**analyse exploratoire (EDA)** réalisés sur les fichiers ECB de taux de change journaliers **EUR/USD** et **EUR/CNY**.\
+L’objectif est de qualifier rapidement la **structure**, la **complétude**, la **cohérence** et l’**exploitabilité** des données avant toute analyse temporelle ou modélisation.
+
+[ → Link to EDA report CNY → EUR](01_Ecb_Exchange_Rate_Profiling_EDA.html#data_cny_to_eur_daily_26012026)
+
+[→ Link to EDA report USD → EUR](01_Ecb_Exchange_Rate_Profiling_EDA.html#data_usd_to_eur_daily_26012026)
+
+### Contexte et périmètre
+
+Les données proviennent de la **European Central Bank (ECB)** (Statistical Data Warehouse) et décrivent des séries de taux de change à fréquence **journalière**.\
+Chaque ligne représente une observation à une date donnée (`TIME_PERIOD`) associée à une valeur de taux (`OBS_VALUE`), enrichie par des métadonnées ECB (identifiants de série, statut d’observation, informations de publication).
+
+### Structure des données (schéma)
+
+Les fichiers suivent une structure standard ECB/SDW et se décomposent en deux catégories :
+
+-   **Variables analytiques**
+
+    -   TIME_PERIOD : date de l’observation (granularité journalière)
+
+    -   OBS_VALUE : taux de change (variable quantitative principale)
+
+-   **Variables de métadonnées et traçabilité**
+
+    -   Identifiants et dimensions : KEY, FREQ, CURRENCY, CURRENCY_DENOM, EXR_TYPE, EXR_SUFFI
+
+    -   Qualité / statut : OBS_STATUS (+ éventuels flags)
+
+    -   Publication / collecte : COLLECTION, SOURCE_AGENCY, etc.
+
+**Implication analytique :** l’EDA se concentre prioritairement sur `TIME_PERIOD` et `OBS_VALUE`. Les métadonnées servent à la traçabilité, au filtrage et à la validation.
+
+### Couverture temporelle et granularité
+
+La variable `TIME_PERIOD` couvre une période longue (début des années 2000 jusqu’à janvier 2026), cohérente avec une fréquence journalière.\
+Les “trous” éventuels sont attendus sur les week-ends et jours fériés (marchés fermés), ce qui est compatible avec un usage en série temporelle.
+
+### Qualité des données (complétude, cohérence, duplicats)
+
+-   **Complétude** : la variable OBS_VALUE présente généralement très peu de valeurs manquantes ; les manques restants sont souvent expliqués par des dates non cotées.
+
+-   **Cohérence** : les ordres de grandeur de OBS_VALUE sont compatibles avec des taux de change réels (pas d’extrêmes manifestement incohérents).
+
+-   **Duplicats** : une observation doit être unique par couple (KEY, TIME_PERIOD). L’absence de duplicats est un prérequis pour des jointures et agrégations fiables.
+
+## Évaluation ROCCC
+
+### Reliable (Fiable)
+
+Source institutionnelle officielle (ECB), publication régulière et méthodologie stable : **fiabilité élevée**.
+
+### Original (Originales)
+
+Données primaires publiées par l’ECB : **pas d’intermédiaire**, faible risque de transformation non documentée.
+
+### Comprehensive (Complètes)
+
+Couverture temporelle longue + métadonnées riches : dataset **auto-descriptif** et complet pour l’analyse.
+
+### Current (À jour)
+
+Dernières dates présentes jusqu’à janvier 2026 : données **récentes**, adaptées au reporting et à l’analyse.
+
+### Cited (Traçables / citées)
+
+Source clairement identifiable (ECB SDW) et variables techniques de traçabilité : **auditabilité élevée**.

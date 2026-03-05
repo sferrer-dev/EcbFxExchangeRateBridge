@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Localhost.ExchangeRatesDB"
+  DTS:DTSID="{FCE8F177-2F0E-4523-92E9-DAA8D3404395}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::pExchangeRateDb_ConnectionString]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=(local)\SQLDEV;Initial Catalog=ExchangeRatesDB;Provider=SQLOLEDB.1;Integrated Security=SSPI; Encrypt=Yes;TrustServerCertificate=Yes;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

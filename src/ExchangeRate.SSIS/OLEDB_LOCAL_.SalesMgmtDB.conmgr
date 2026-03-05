@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Localhost.SalesMgmtDB"
+  DTS:DTSID="{8EC4B052-60A1-4AC5-8735-C10FDE370140}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::pSalesMgmtDb_ConnectionString]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=(local)\SQLDEV;Initial Catalog=SalesMgmtDB;Provider=SQLOLEDB.1;Integrated Security=SSPI;Encrypt=True;TrustServerCertificate=True;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

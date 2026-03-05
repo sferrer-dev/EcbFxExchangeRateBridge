@@ -1,0 +1,230 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/27/2026 11:41:46 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PEARL"
+  DTS:CreatorName="SFERRER\stephane"
+  DTS:DTSID="{0D272385-9950-4F0B-AA8B-90CDD0AD9134}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="04_Master_Devise"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{2CABB912-941F-4761-A1B5-6F6CAF143291}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DC59523F-6987-4880-BDE1-3839C13AB846}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="(DT_DBTIMESTAMP)(DT_DBDATE)GETDATE()"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="AsOfDate">
+      <DTS:VariableValue
+        DTS:DataType="7">3/2/2026</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E6AA8CEF-6D20-452D-81A7-06C48AFA5B0E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MinLastRateDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12:00:00 AM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\EXEC 02_Load_Devises"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:DTSID="{B5E8A11D-B021-494E-AD60-7056BDAE68BB}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXEC 02_Load_Devises"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>02_Load_Devises.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>pAsOfDate</ParameterName>
+            <BindedVariableOrParameterName>User::AsOfDate</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>pMinLastRateDate</ParameterName>
+            <BindedVariableOrParameterName>User::MinLastRateDate</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EXEC 02_Load_DevisesHisto"
+      DTS:CreationName="Microsoft.ExecutePackageTask"
+      DTS:Description="Tâche d'exécution de package"
+      DTS:DTSID="{3BC44644-EE1E-4A50-BD28-A9773894CEB8}"
+      DTS:ExecutableType="Microsoft.ExecutePackageTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EXEC 02_Load_DevisesHisto"
+      DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecutePackageTask>
+          <UseProjectReference>True</UseProjectReference>
+          <PackageName>02_Load_DevisesHisto.dtsx</PackageName>
+          <ParameterAssignment>
+            <ParameterName>pAsOfDate</ParameterName>
+            <BindedVariableOrParameterName>User::AsOfDate</BindedVariableOrParameterName>
+          </ParameterAssignment>
+          <ParameterAssignment>
+            <ParameterName>pMinLastRateDate</ParameterName>
+            <BindedVariableOrParameterName>User::MinLastRateDate</BindedVariableOrParameterName>
+          </ParameterAssignment>
+        </ExecutePackageTask>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_GetMinLastRateDate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{46D084C2-C27A-4F28-8D8F-A15B50BE9150}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_GetMinLastRateDate"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EC4B052-60A1-4AC5-8735-C10FDE370140}"
+          SQLTask:SqlStatementSource="SELECT ISNULL(MIN(last_rate_date), '1999-04-01') AS MinLastRateDate&#xA;FROM SalesMgmtDB.dbo.vw_devises_last_rate;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="MinLastRateDate"
+            SQLTask:DtsVariableName="User::MinLastRateDate" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte]"
+      DTS:CreationName=""
+      DTS:DTSID="{64F5FF29-18D9-4EFD-A23A-F5B958C2B038}"
+      DTS:From="Package\SQL_GetMinLastRateDate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte"
+      DTS:To="Package\EXEC 02_Load_DevisesHisto" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{84F39DE9-00AD-4CA3-9F38-69FA9C601454}"
+      DTS:From="Package\EXEC 02_Load_DevisesHisto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 1"
+      DTS:To="Package\EXEC 02_Load_Devises" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,42"
+          Id="Package\EXEC 02_Load_Devises"
+          TopLeft="422,358" />
+        <NodeLayout
+          Size="225,42"
+          Id="Package\EXEC 02_Load_DevisesHisto"
+          TopLeft="405,234" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\SQL_GetMinLastRateDate"
+          TopLeft="416,119" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte]"
+          TopLeft="519.25,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73"
+              Start="0,0"
+              End="0,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 1]"
+          TopLeft="519.75,276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Objectif du package&#xA;Orchestrer de bout en bout la synchronisation des données des taux de change journaliers entre les devises de la base métier et les données de la base technique.&#xA;&#xA;Principe de fonctionnement&#xA;1. Determiner quelle est la dernière date connue dans l'historique pour toutes les devises suivies.&#xA;2. Synchroniser l'historique des devises avec l'historique des taux de change de la base technique à jour.&#xA;3. Mettre à jour les derniers taux de change des devises à partir de leurs historiques à jour.&#xA;&#xA;Rôle dans l'architecture&#xA;Ce package doit être lancé après la chaine ETL ECB Daily Exchange.&#xA;Il est destiné à être exécuté par un ordonnanceur (SQL Server Agent).&#xA;&#xA;Remarque&#xA;Package purement orchestrateur : aucune transformation métier directe, la logique est déléguée aux packages spécialisés appelé."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="886,247"
+          Id="c75695ad-377b-4b59-9c6e-8a38fb4a351f"
+          TopLeft="673,2" />
+        <AnnotationLayout
+          Text="Déterminer la dernière date connue dans l'historique des devises pour déterminer une plage de mise à jour.&#xA;"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="336,72"
+          Id="16605b0d-3ca2-4d4b-9102-40f9266d92c4"
+          TopLeft="186,26" />
+        <AnnotationLayout
+          Text="Mettre à jour et synchroniser l'historique&#xA;"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="244,56"
+          Id="e18975c9-0296-4c9b-9bd6-bcd9a4a2a808"
+          TopLeft="241,190" />
+        <AnnotationLayout
+          Text="Mettre à jour les taux de change des devises"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="263,40"
+          Id="f40bb13e-4430-4398-a2ae-00f46999f595"
+          TopLeft="233,298" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

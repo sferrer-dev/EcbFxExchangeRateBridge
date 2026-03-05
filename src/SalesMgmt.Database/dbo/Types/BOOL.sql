@@ -1,0 +1,1 @@
+﻿CREATE TYPE [dbo].[BOOL] FROM [char](1) NULL

@@ -1,0 +1,1 @@
+﻿CREATE TYPE [dbo].[ID] FROM [int] NOT NULL

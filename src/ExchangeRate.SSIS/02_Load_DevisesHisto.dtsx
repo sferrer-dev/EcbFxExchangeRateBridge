@@ -1,0 +1,355 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/27/2026 2:42:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PEARL"
+  DTS:CreatorName="SFERRER\stephane"
+  DTS:DTSID="{85022D94-845E-47CE-A011-66EFAF6A0A92}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="02_Load_EcbDailyDevises"
+  DTS:PackageType="5"
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{320AAE4B-8927-45A2-95D1-10790D4DEE3D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{D6A16CE1-18E4-4F11-B8FB-1DFEE6F2BF68}"
+      DTS:ObjectName="pAsOfDate"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">1/1/2001</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="7"
+      DTS:DTSID="{1EB3D328-FA87-4786-AE31-8B69B63818D3}"
+      DTS:ObjectName="pMinLastRateDate"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="7"
+        DTS:Name="ParameterValue">1/1/2001</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C2D6E419-CABA-42A3-8DF6-E4B4AC8EE898}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditErrorCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{11CEC218-1A54-4053-A0B8-359FB37787BD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="DevisesExist">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Check_DevisesHisto_Exists"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{2CBD8C38-2984-4094-B4C6-D679A8F1B4D4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Check_DevisesHisto_Exists"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EC4B052-60A1-4AC5-8735-C10FDE370140}"
+          SQLTask:SqlStatementSource="SELECT&#xA;    CAST(&#xA;        CASE &#xA;            WHEN EXISTS (SELECT 1 FROM SalesMgmtDB.dbo.DEVISES_HISTO)&#xA;            THEN 1 &#xA;            ELSE 0 &#xA;        END&#xA;    AS bit) AS devises_exist;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="devises_exist"
+            SQLTask:DtsVariableName="User::DevisesExist" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_CountAuditAnomalies"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{F0AB620C-3F63-48BA-970A-61B2DAE58FD1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_CountAuditAnomalies"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EC4B052-60A1-4AC5-8735-C10FDE370140}"
+          SQLTask:SqlStatementSource="SELECT COUNT(1) AS ErrorCount&#xA;FROM SalesMgmtDB.dbo.fn_Audit_EcbVsDevisesHisto(?, ?)&#xA;WHERE Status &lt;&gt; 'OK';"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditErrorCount" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::pMinLastRateDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::pAsOfDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Insert_DevisesHisto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Synchronise et transfère les historiques complets des devises suivies de la base de données technique source vers la base métier destination"
+      DTS:DTSID="{3F4E8316-6E78-4C8C-B8B6-3E80A0B121C5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Insert_DevisesHisto"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EC4B052-60A1-4AC5-8735-C10FDE370140}"
+          SQLTask:SqlStatementSource="EXEC SalesMgmtDB.dbo.usp_Merge_DevisesHisto_FromEcbDaily;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Merge_DevisesHisto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{1DBF46B3-584D-4D02-A657-42B6C314E6E1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Merge_DevisesHisto"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8EC4B052-60A1-4AC5-8735-C10FDE370140}"
+          SQLTask:SqlStatementSource="EXEC SalesMgmtDB.dbo.usp_Merge_DevisesHisto_FromEcbDaily ?, ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::pMinLastRateDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::pAsOfDate"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte]"
+      DTS:CreationName=""
+      DTS:DTSID="{517D5DB2-7886-4CE9-92A0-09F8C6926083}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DevisesExist] == False"
+      DTS:From="Package\SQL_Check_DevisesHisto_Exists"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte"
+      DTS:To="Package\SQL_Insert_DevisesHisto" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{9980FD7A-EB5A-42FF-8175-738ACBD2ED2F}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::DevisesExist] == True"
+      DTS:From="Package\SQL_Check_DevisesHisto_Exists"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 1"
+      DTS:To="Package\SQL_CountAuditAnomalies" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{A8D489FC-FD99-4BE5-936B-D73ADB3A56F7}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::AuditErrorCount] &gt; 0"
+      DTS:From="Package\SQL_CountAuditAnomalies"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Contrainte 3"
+      DTS:To="Package\SQL_Merge_DevisesHisto" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="244,42"
+          Id="Package\SQL_Check_DevisesHisto_Exists"
+          TopLeft="675.166666666667,22" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\SQL_CountAuditAnomalies"
+          TopLeft="789.538461538461,314.076923076923" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\SQL_Insert_DevisesHisto"
+          TopLeft="641.166666666667,512" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\SQL_Merge_DevisesHisto"
+          TopLeft="864.46336996337,510.923076923077" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte]"
+          TopLeft="749.068181818182,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,448"
+              Start="0,0"
+              End="0,440.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,440.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,212.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 1]"
+          TopLeft="835.76923076923,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,250.076923076923"
+              Start="0,0"
+              End="0,242.576923076923">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,242.576923076923" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,113.288461538461,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 3]"
+          TopLeft="833.038461538461,356.076923076923">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135.924908424909,154.846153846154"
+              Start="0,0"
+              End="135.924908424909,147.346153846154">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.423076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,73.423076923077"
+                    Point2="0,77.423076923077"
+                    Point3="4,77.423076923077" />
+                  <mssgle:LineSegment
+                    End="131.924908424909,77.423076923077" />
+                  <mssgle:CubicBezierSegment
+                    Point1="131.924908424909,77.423076923077"
+                    Point2="135.924908424909,77.423076923077"
+                    Point3="135.924908424909,81.423076923077" />
+                  <mssgle:LineSegment
+                    End="135.924908424909,147.346153846154" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="59.9624542124545,82.423076923077,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Objectif du package&#xA;Ce package assure la synchronisation des taux de change journaliers provenant de ExchangeRatesDB vers la table métier dbo.DEVISES_HISTO.&#xA;&#xA;Principe de fonctionnement&#xA;  1. Vérifie si les données des devises existent déjà en base.&#xA;  2. Si nécessaire, alors on traite l'intégralité de la plage données des taux de change journaliers pour les insérér dans l'historique des devises de la base cible.&#xA;  3. Sinon déterminer la plus petite date absentes pour toutes les devises suivies et alors ne traiter que la période spécifique pour mettre à jour l'historique.&#xA;&#xA;Finalité&#xA; Mettre à jour et synchroniser les données de la table DEVISES à partir des vues de taux.&#xA;&#xA;Remarque&#xA; Ce package est idempotent : il peut être relancé sans provoquer d’incohérence fonctionnelle."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="857,231"
+          Id="e8dc0863-95ef-4774-897d-c81dc656db5c"
+          TopLeft="971.833333333333,23.3333333333333" />
+        <AnnotationLayout
+          Text="Contrôle l'existence des données dans l'historique des devises"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="353,56"
+          Id="a7696465-761e-4596-bfb9-3777e4a1bb42"
+          TopLeft="381,69" />
+        <AnnotationLayout
+          Text="Charger et insérer toutes les données des taux de change journaliers connus dans l'historique des devises"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="236,72"
+          Id="320c6311-38b6-4af8-b005-d39fd8f5dff2"
+          TopLeft="445,428" />
+        <AnnotationLayout
+          Text="La table de l'historique des devises est vide"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="169,56"
+          Id="af693c92-4ad3-403e-8709-04f2cb2c62df"
+          TopLeft="572,258" />
+        <AnnotationLayout
+          Text="Il y a déjà des devises historisées"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="130,56"
+          Id="2d87202e-4990-4aa6-ae32-170b92935bff"
+          TopLeft="836,249" />
+        <AnnotationLayout
+          Text="Auditer dans le but de vérifier qu'il y a bien des différences (anomalies) entre les deux bases de données :&#xA;  - Il doit manquer les taux du jour pour chacune de devises suivies"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="585,56"
+          Id="d4677b9c-05d7-4447-9f47-502df339e80b"
+          TopLeft="861,365" />
+        <AnnotationLayout
+          Text="Syncrhoniser et mettre à jour les taux journaliers sur une plage de dates :&#xA;- FromDate : pMinLastRateDate&#xA;- ToDate : pAsOfDate (= aujourd'hui)"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="413,72"
+          Id="215a9bf5-9dab-46ca-ae58-6add2296544f"
+          TopLeft="982,443" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

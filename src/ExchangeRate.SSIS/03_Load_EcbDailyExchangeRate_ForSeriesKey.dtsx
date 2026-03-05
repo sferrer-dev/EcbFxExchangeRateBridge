@@ -1,0 +1,2073 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/26/2026 10:20:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PEARL"
+  DTS:CreatorName="SFERRER\stephane"
+  DTS:DTSID="{AFB222AC-F75D-4C36-88F9-EA0DC00E1EB7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="03_Load_EcbDailyExchangeRate_ForSeriesKey"
+  DTS:PackageType="5"
+  DTS:VersionBuild="142"
+  DTS:VersionGUID="{4ED8AC3D-CB65-4997-8BD3-412EA5FAD786}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FFC_DailyCurrency_Import]"
+      DTS:CreationName="FLATFILE"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{1510F42F-2B29-4701-BFC2-2E872F3D8EFC}"
+      DTS:ObjectName="FFC_DailyCurrency_Import">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::DownloadPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="65001">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="KEY"
+              DTS:DTSID="{2E45CB4F-D98A-40B3-9EDE-BF070B27C2D2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FREQ"
+              DTS:DTSID="{83E49223-3276-42EC-9FC0-E63BC7922689}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CURRENCY"
+              DTS:DTSID="{C8B36AF4-0441-4DB0-B1F9-CDF848B6C36D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CURRENCY_DENOM"
+              DTS:DTSID="{03BC71C4-D00F-4A50-ABC7-7763F17AF0AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EXR_TYPE"
+              DTS:DTSID="{A9657D2B-18B5-4E94-9EC1-BBBEE6D75636}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EXR_SUFFIX"
+              DTS:DTSID="{D2F4C8C6-AA55-4734-8FFF-4B9C5A0C031D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="133"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TIME_PERIOD"
+              DTS:DTSID="{16A00D8B-F3E9-430E-9157-A03AD4DDC98F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:DataScale="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OBS_VALUE"
+              DTS:DTSID="{08F13346-B00C-490F-9442-534CC7A34F19}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OBS_STATUS"
+              DTS:DTSID="{ABB22208-3B17-4C3A-8636-8C2E8A743068}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OBS_CONF"
+              DTS:DTSID="{B023C02A-EB5E-4E6D-BA14-95D0E7D0BE36}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OBS_PRE_BREAK"
+              DTS:DTSID="{9C0B34CE-4763-4369-B6E7-F125081F60C4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OBS_COM"
+              DTS:DTSID="{3F48EC8D-266B-4524-A079-9535A0A36CEF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TIME_FORMAT"
+              DTS:DTSID="{E8FE8EF1-02D7-4B84-918A-C20FAD766857}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BREAKS"
+              DTS:DTSID="{0159DBBC-E38E-4F35-98E1-98247279050A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COLLECTION"
+              DTS:DTSID="{79E32198-9DD8-4B91-8137-0236AF123A76}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COMPILING_ORG"
+              DTS:DTSID="{B40E6733-F665-4B20-B046-73149118CA2F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DISS_ORG"
+              DTS:DTSID="{36ECCCF2-CCA3-457B-A566-C84F716C1D72}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DOM_SER_IDS"
+              DTS:DTSID="{6571E598-0633-4A7C-99F7-7CABA0A0742B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PUBL_ECB"
+              DTS:DTSID="{DF6EF45D-E5CF-4C36-AB36-0B8179284230}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PUBL_MU"
+              DTS:DTSID="{53060E87-7037-41F7-8D06-6CB2E2042363}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PUBL_PUBLIC"
+              DTS:DTSID="{61A12C23-987E-4CB5-852A-290F4ACE085C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="8"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UNIT_INDEX_BASE"
+              DTS:DTSID="{DDB298D4-BDAC-4174-B1FE-C3BDBAFCC940}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COMPILATION"
+              DTS:DTSID="{D0546E71-B219-45AF-AEEF-31C763C24C15}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COVERAGE"
+              DTS:DTSID="{E6D8F0CA-3291-4783-9C06-A2E1D142C714}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DECIMALS"
+              DTS:DTSID="{029B272D-D566-446E-AB9B-EF6859A1CD00}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NAT_TITLE"
+              DTS:DTSID="{86FFCA91-20C4-45EE-9DC0-3D6D379DDD9E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SOURCE_AGENCY"
+              DTS:DTSID="{3750AD14-73D8-4870-BF4A-1ED0F8E83B57}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SOURCE_PUB"
+              DTS:DTSID="{B05440DF-040A-49BC-8ACF-C873207717C2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TITLE"
+              DTS:DTSID="{ED294474-757F-40C9-AF8E-7522E0883DDB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TITLE_COMPL"
+              DTS:DTSID="{9E69CC1E-8D91-4696-90C3-929E2D490952}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UNIT"
+              DTS:DTSID="{DD43ED21-C2FA-4CF5-90EA-A7385466A46A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UNIT_MULT"
+              DTS:DTSID="{6CC7730B-6EE1-4DBB-AD6B-FF830CA5BEB0}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="Exemple &quot;D:\SSIS\Data\In\data_xxx_to_eur_daily_ddMMyyyy&quot;"
+      DTS:DTSID="{D8C16D2E-CAA1-4E0B-B057-98F7273B437B}"
+      DTS:ObjectName="pDownloadPath">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:Description="Exemple &quot;EXR.D.XXX.EUR.SP00.A&quot;"
+      DTS:DTSID="{99BC29C8-6DC3-4626-9644-EA2A17A6266B}"
+      DTS:ObjectName="pSeriesKey">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0B6F1A90-D95E-4D8D-A068-F65AB25900EF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="CurrencyExists">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9EEE9BE8-CD6D-4CFB-818E-AE48A4556AD8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::pDownloadPath]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DownloadPath">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{EFCEC0AE-8158-428E-841F-9A30EA2111E7}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::pSeriesKey]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SeriesKey">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="2" />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_DailyRateCurrency_CSV_to_SQL"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{137DECAA-766E-4C4F-8378-7846FC95C283}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_DailyRateCurrency_CSV_to_SQL"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="DEST_Insert_Currency_Exchange_Rates_Daily"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[exchange_rates_daily]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Connections[OleDbConnection]"
+                  connectionManagerID="{FCE8F177-2F0E-4523-92E9-DAA8D3404395}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Localhost.ExchangeRatesDB]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[obs_value]"
+                      cachedDataType="numeric"
+                      cachedName="obs_value"
+                      cachedPrecision="18"
+                      cachedScale="6"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_value]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_value]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[time_period]"
+                      cachedDataType="dbDate"
+                      cachedName="time_period"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[time_period]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[time_period]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[obs_status]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="obs_status"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_status]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_status]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[obs_conf]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="obs_conf"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_conf]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_conf]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[obs_pre_break]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="obs_pre_break"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_pre_break]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_pre_break]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[obs_com]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="obs_com"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_com]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_com]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[time_format]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="time_format"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[time_format]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[time_format]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[breaks]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="breaks"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[breaks]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[breaks]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[collection_code]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="collection_code"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[collection_code]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[collection_code]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[compiling_org]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="compiling_org"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[compiling_org]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[compiling_org]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[diss_org]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="diss_org"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[diss_org]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[diss_org]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[dom_ser_ids]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="dom_ser_ids"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[dom_ser_ids]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[dom_ser_ids]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[publ_ecb]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="publ_ecb"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[publ_ecb]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_ecb]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[publ_mu]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="publ_mu"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[publ_mu]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_mu]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[publ_public]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="publ_public"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[publ_public]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_public]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[unit_index_base]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="unit_index_base"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[unit_index_base]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit_index_base]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[compilation]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="compilation"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[compilation]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[compilation]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[coverage]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="coverage"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[coverage]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[coverage]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[decimals]"
+                      cachedDataType="i1"
+                      cachedName="decimals"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[decimals]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[decimals]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[nat_title]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nat_title"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[nat_title]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[nat_title]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[source_agency]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="source_agency"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[source_agency]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[source_agency]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[source_pub]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="source_pub"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[source_pub]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[source_pub]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[title]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[title]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[title_compl]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="title_compl"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[title_compl]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[title_compl]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[unit]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="unit"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[unit]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[unit_mult]"
+                      cachedDataType="i1"
+                      cachedName="unit_mult"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[unit_mult]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit_mult]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[series_key]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="series_key"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[series_key]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[series_key]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[freq]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="freq"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[freq]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[freq]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[currency]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="currency"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[currency]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[currency]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[currency_denom]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="currency_denom"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[currency_denom]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[currency_denom]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[exr_type]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="exr_type"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[exr_type]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[exr_type]" />
+                    <inputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].Columns[exr_suffix]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="exr_suffix"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[exr_suffix]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[exr_suffix]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[series_key]"
+                      dataType="wstr"
+                      length="30"
+                      name="series_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[freq]"
+                      dataType="wstr"
+                      length="1"
+                      name="freq" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[currency]"
+                      dataType="wstr"
+                      length="3"
+                      name="currency" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[currency_denom]"
+                      dataType="wstr"
+                      length="3"
+                      name="currency_denom" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[exr_type]"
+                      dataType="wstr"
+                      length="4"
+                      name="exr_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[exr_suffix]"
+                      dataType="wstr"
+                      length="1"
+                      name="exr_suffix" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[time_period]"
+                      dataType="wstr"
+                      length="10"
+                      name="time_period" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_value]"
+                      dataType="numeric"
+                      name="obs_value"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_status]"
+                      dataType="wstr"
+                      length="1"
+                      name="obs_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_conf]"
+                      dataType="wstr"
+                      length="255"
+                      name="obs_conf" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_pre_break]"
+                      dataType="wstr"
+                      length="255"
+                      name="obs_pre_break" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[obs_com]"
+                      dataType="wstr"
+                      length="255"
+                      name="obs_com" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[time_format]"
+                      dataType="wstr"
+                      length="3"
+                      name="time_format" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[breaks]"
+                      dataType="wstr"
+                      length="255"
+                      name="breaks" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[collection_code]"
+                      dataType="wstr"
+                      length="1"
+                      name="collection_code" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[compiling_org]"
+                      dataType="wstr"
+                      length="255"
+                      name="compiling_org" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[diss_org]"
+                      dataType="wstr"
+                      length="255"
+                      name="diss_org" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[dom_ser_ids]"
+                      dataType="wstr"
+                      length="255"
+                      name="dom_ser_ids" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[publ_ecb]"
+                      dataType="wstr"
+                      length="255"
+                      name="publ_ecb" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[publ_mu]"
+                      dataType="wstr"
+                      length="255"
+                      name="publ_mu" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[publ_public]"
+                      dataType="wstr"
+                      length="255"
+                      name="publ_public" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[unit_index_base]"
+                      dataType="wstr"
+                      length="8"
+                      name="unit_index_base" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[compilation]"
+                      dataType="wstr"
+                      length="255"
+                      name="compilation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[coverage]"
+                      dataType="wstr"
+                      length="255"
+                      name="coverage" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[decimals]"
+                      dataType="i2"
+                      name="decimals" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[nat_title]"
+                      dataType="wstr"
+                      length="255"
+                      name="nat_title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[source_agency]"
+                      dataType="wstr"
+                      length="3"
+                      name="source_agency" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[source_pub]"
+                      dataType="wstr"
+                      length="255"
+                      name="source_pub" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="255"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[title_compl]"
+                      dataType="wstr"
+                      length="255"
+                      name="title_compl" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[unit]"
+                      dataType="wstr"
+                      length="3"
+                      name="unit" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[unit_mult]"
+                      dataType="i2"
+                      name="unit_mult" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB].ExternalColumns[rate_daily_id]"
+                      dataType="i4"
+                      name="rate_daily_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Source du fichier plat;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Source du fichier plat"
+              localeId="1033"
+              name="SRC_DailyCurrency_to_EUR_CSV"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Spécifie si les colonnes dont la longueur est zéro sont traitées comme des valeurs NULL."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom d'une colonne de sortie contenant le nom du fichier. Si aucun nom n'est spécifié, aucune colonne de sortie contenant le nom du fichier ne sera générée."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FFC_DailyCurrency_Import]"
+                  connectionManagerRefId="Package.ConnectionManagers[FFC_DailyCurrency_Import]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat]"
+                  name="Sortie de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[series_key]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[KEY]"
+                      length="20"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[series_key]"
+                      name="series_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[freq]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[FREQ]"
+                      length="1"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[freq]"
+                      name="freq"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[currency]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY]"
+                      length="3"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[currency]"
+                      name="currency"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[currency_denom]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY_DENOM]"
+                      length="3"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[currency_denom]"
+                      name="currency_denom"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[exr_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_TYPE]"
+                      length="4"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[exr_type]"
+                      name="exr_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[exr_suffix]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_SUFFIX]"
+                      length="1"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[exr_suffix]"
+                      name="exr_suffix"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[time_period]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TIME_PERIOD]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[time_period]"
+                      name="time_period"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_value]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_VALUE]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_value]"
+                      name="obs_value"
+                      precision="18"
+                      scale="6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_STATUS]"
+                      length="1"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_status]"
+                      name="obs_status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_conf]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_CONF]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_conf]"
+                      name="obs_conf"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_pre_break]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_PRE_BREAK]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_pre_break]"
+                      name="obs_pre_break"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_com]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_COM]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[obs_com]"
+                      name="obs_com"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[time_format]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TIME_FORMAT]"
+                      length="3"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[time_format]"
+                      name="time_format"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[breaks]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[BREAKS]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[breaks]"
+                      name="breaks"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[collection_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COLLECTION]"
+                      length="1"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[collection_code]"
+                      name="collection_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[compiling_org]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILING_ORG]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[compiling_org]"
+                      name="compiling_org"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[diss_org]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DISS_ORG]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[diss_org]"
+                      name="diss_org"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[dom_ser_ids]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DOM_SER_IDS]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[dom_ser_ids]"
+                      name="dom_ser_ids"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_ecb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_ECB]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_ecb]"
+                      name="publ_ecb"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_mu]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_MU]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_mu]"
+                      name="publ_mu"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_public]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_PUBLIC]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[publ_public]"
+                      name="publ_public"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit_index_base]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_INDEX_BASE]"
+                      length="8"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit_index_base]"
+                      name="unit_index_base"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[compilation]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILATION]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[compilation]"
+                      name="compilation"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[coverage]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COVERAGE]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[coverage]"
+                      name="coverage"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[decimals]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DECIMALS]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[decimals]"
+                      name="decimals"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[nat_title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[NAT_TITLE]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[nat_title]"
+                      name="nat_title"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[source_agency]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_AGENCY]"
+                      length="3"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[source_agency]"
+                      name="source_agency"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[source_pub]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_PUB]"
+                      length="50"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[source_pub]"
+                      name="source_pub"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE]"
+                      length="100"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[title_compl]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE_COMPL]"
+                      length="100"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[title_compl]"
+                      name="title_compl"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT]"
+                      length="3"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit]"
+                      name="unit"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit_mult]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_MULT]"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[unit_mult]"
+                      name="unit_mult"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[KEY]"
+                      dataType="wstr"
+                      length="20"
+                      name="KEY" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[FREQ]"
+                      dataType="wstr"
+                      length="1"
+                      name="FREQ" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY_DENOM]"
+                      dataType="wstr"
+                      length="3"
+                      name="CURRENCY_DENOM" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_TYPE]"
+                      dataType="wstr"
+                      length="4"
+                      name="EXR_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_SUFFIX]"
+                      dataType="wstr"
+                      length="1"
+                      name="EXR_SUFFIX" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TIME_PERIOD]"
+                      dataType="dbDate"
+                      name="TIME_PERIOD" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_VALUE]"
+                      dataType="numeric"
+                      name="OBS_VALUE"
+                      precision="18"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_STATUS]"
+                      dataType="wstr"
+                      length="1"
+                      name="OBS_STATUS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_CONF]"
+                      dataType="wstr"
+                      length="50"
+                      name="OBS_CONF" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_PRE_BREAK]"
+                      dataType="wstr"
+                      length="50"
+                      name="OBS_PRE_BREAK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[OBS_COM]"
+                      dataType="wstr"
+                      length="50"
+                      name="OBS_COM" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TIME_FORMAT]"
+                      dataType="wstr"
+                      length="3"
+                      name="TIME_FORMAT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[BREAKS]"
+                      dataType="wstr"
+                      length="50"
+                      name="BREAKS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COLLECTION]"
+                      dataType="wstr"
+                      length="1"
+                      name="COLLECTION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILING_ORG]"
+                      dataType="wstr"
+                      length="50"
+                      name="COMPILING_ORG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DISS_ORG]"
+                      dataType="wstr"
+                      length="50"
+                      name="DISS_ORG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DOM_SER_IDS]"
+                      dataType="wstr"
+                      length="50"
+                      name="DOM_SER_IDS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_ECB]"
+                      dataType="wstr"
+                      length="50"
+                      name="PUBL_ECB" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_MU]"
+                      dataType="wstr"
+                      length="50"
+                      name="PUBL_MU" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_PUBLIC]"
+                      dataType="wstr"
+                      length="50"
+                      name="PUBL_PUBLIC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_INDEX_BASE]"
+                      dataType="wstr"
+                      length="8"
+                      name="UNIT_INDEX_BASE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILATION]"
+                      dataType="wstr"
+                      length="50"
+                      name="COMPILATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COVERAGE]"
+                      dataType="wstr"
+                      length="50"
+                      name="COVERAGE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DECIMALS]"
+                      dataType="i1"
+                      name="DECIMALS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[NAT_TITLE]"
+                      dataType="wstr"
+                      length="50"
+                      name="NAT_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_AGENCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="SOURCE_AGENCY" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_PUB]"
+                      dataType="wstr"
+                      length="50"
+                      name="SOURCE_PUB" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE]"
+                      dataType="wstr"
+                      length="100"
+                      name="TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE_COMPL]"
+                      dataType="wstr"
+                      length="100"
+                      name="TITLE_COMPL" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT]"
+                      dataType="wstr"
+                      length="3"
+                      name="UNIT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_MULT]"
+                      dataType="i1"
+                      name="UNIT_MULT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Colonne de sortie d'erreur de source de fichier plat"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      name="Colonne de sortie d'erreur de source de fichier plat" />
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_DailyRateCurrency_CSV_to_SQL.Paths[Sortie de source de fichier plat]"
+              endId="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source de fichier plat"
+              startId="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV.Outputs[Sortie de source de fichier plat]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_CurrencyExists"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{2BFAF191-90EA-49F9-BDD0-3647127AA2CB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_CurrencyExists"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FCE8F177-2F0E-4523-92E9-DAA8D3404395}"
+          SQLTask:SqlStatementSource="SELECT CASE &#xA;         WHEN EXISTS (&#xA;           SELECT 1&#xA;           FROM dbo.exchange_rates_daily&#xA;           WHERE series_key = ?&#xA;         )&#xA;         THEN 1 &#xA;         ELSE 0 &#xA;       END AS currency_exists;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="currency_exists"
+            SQLTask:DtsVariableName="User::CurrencyExists" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::pSeriesKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Delete_ExchangeRatesDaily_For_SeriesKeys"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tâche d'exécution de requêtes SQL"
+      DTS:DTSID="{C31B33E1-8D73-4B3B-BB66-BECC5A89470B}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Delete_ExchangeRatesDaily_For_SeriesKeys"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FCE8F177-2F0E-4523-92E9-DAA8D3404395}"
+          SQLTask:SqlStatementSource="DELETE FROM ExchangeRatesDB.dbo.exchange_rates_daily&#xA;WHERE series_key = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::pSeriesKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte]"
+      DTS:CreationName=""
+      DTS:DTSID="{C0ABB2A4-D283-4875-838F-90FC6A9C7343}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::CurrencyExists] == False"
+      DTS:From="Package\SQL_CurrencyExists"
+      DTS:ObjectName="Contrainte"
+      DTS:To="Package\DFT_DailyRateCurrency_CSV_to_SQL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{99A88C66-049E-47B6-8349-AFF27FF990BA}"
+      DTS:From="Package\SQL_Delete_ExchangeRatesDaily_For_SeriesKeys"
+      DTS:ObjectName="Contrainte 1"
+      DTS:To="Package\DFT_DailyRateCurrency_CSV_to_SQL" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Contrainte 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4CC5D0FE-F5CF-4376-9B42-F1620684C757}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::CurrencyExists] == True"
+      DTS:From="Package\SQL_CurrencyExists"
+      DTS:ObjectName="Contrainte 2"
+      DTS:To="Package\SQL_Delete_ExchangeRatesDaily_For_SeriesKeys" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="271,42"
+          Id="Package\DFT_DailyRateCurrency_CSV_to_SQL"
+          TopLeft="52.858977626723,322.333333140943" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SQL_CurrencyExists"
+          TopLeft="58.4615384615385,43.0769230769231" />
+        <NodeLayout
+          Size="332,42"
+          Id="Package\SQL_Delete_ExchangeRatesDaily_For_SeriesKeys"
+          TopLeft="131.076923076923,161.307692307693" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte]"
+          TopLeft="118.096155480028,85.0769230769231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,237.25641006402"
+              Start="0,0"
+              End="0,229.75641006402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,229.75641006402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,106.87820503201,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 1]"
+          TopLeft="297.076923076923,203.307692307693">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-64.8846121168668,119.025640833251"
+              Start="0,0"
+              End="-64.8846121168668,111.525640833251">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,66.9962186334797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,66.9962186334797"
+                    Point2="0,70.9962186334797"
+                    Point3="-4,70.9962186334797" />
+                  <mssgle:LineSegment
+                    End="-60.8846121168668,70.9962186334797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-60.8846121168668,70.9962186334797"
+                    Point2="-64.8846121168668,70.9962186334797"
+                    Point3="-64.8846121168668,74.9962186334797" />
+                  <mssgle:LineSegment
+                    End="-64.8846121168668,111.525640833251" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Contrainte 2]"
+          TopLeft="177.794871794872,85.0769230769231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="119.282051282051,76.2307692307696"
+              Start="0,0"
+              End="119.282051282051,68.7307692307696">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.8930828207938" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.8930828207938"
+                    Point2="0,30.8930828207938"
+                    Point3="4,30.8930828207938" />
+                  <mssgle:LineSegment
+                    End="115.282051282051,30.8930828207938" />
+                  <mssgle:CubicBezierSegment
+                    Point1="115.282051282051,30.8930828207938"
+                    Point2="119.282051282051,30.8930828207938"
+                    Point3="119.282051282051,34.8930828207938" />
+                  <mssgle:LineSegment
+                    End="119.282051282051,68.7307692307696" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="51.6410256410257,35.8930828207938,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Objectif du package&#xA;Charge complètement les données d'un taux de change à partir de sa clé de série  &#xA;&#xA;Paramètres d’entrée&#xA;- pDownloadPath : chemin du fichier CSV source à traiter.&#xA;- pSeriesKey : identifiant de la série de taux associée aux devises à charger.&#xA; &#xA;Principe de fonctionnement&#xA; 1. Vérifie si des données de taux existent déjà pour la clé de série fournie.&#xA; 2. Si aucune donnée n’est présente, déclenche le Data Flow de chargement depuis le fichier CSV. &#xA; 3. Si les données existent il faut toutes les supprimer pour cette clé de série.&#xA; 4. Intègre les données dans la base SQL Server en respectant les règles d’unicité et de cohérence.&#xA; &#xA;Finalité&#xA;Mettre à jour un taux de change journalier dansla base à partir du dernier fichier CSV téléchargé&#xA;&#xA;Remarque&#xA;Package paramétrable et relançable, conçu pour s’intégrer dans un orchestrateur ETL maître."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="545,311"
+          Id="10647499-71dc-4414-9794-ad27d140d737"
+          TopLeft="465.802197802198,6.54945054945057" />
+        <AnnotationLayout
+          Text="Lecture du fichier CSV ECB et insertion contrôlée des données de référence en base."
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="297,56"
+          Id="dd82d39d-de7d-45de-8407-546dba6ee9a9"
+          TopLeft="58.4615384615385,377.384615384616" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_DailyRateCurrency_CSV_to_SQL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="313,42"
+          Id="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily"
+          TopLeft="156.85715144305,223.666667239202" />
+        <NodeLayout
+          Size="326,42"
+          Id="Package\DFT_DailyRateCurrency_CSV_to_SQL\SRC_DailyCurrency_to_EUR_CSV"
+          TopLeft="173,53" />
+        <EdgeLayout
+          Id="Package\DFT_DailyRateCurrency_CSV_to_SQL.Paths[Sortie de source de fichier plat]"
+          TopLeft="311.678575721525,95">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,128.666667239202"
+              Start="0,0"
+              End="0,121.166667239202">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,121.166667239202" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Objectif du Data Flow&#xA;Charger les taux de change journaliers depuis un fichier CSV ECB vers la table SQL Server exchange_rates_daily.&#xA;&#xA;Traitements réalisés&#xA;- Lecture du fichier CSV de taux de change (source ECB).&#xA;- Mapping direct des colonnes vers le modèle relationnel cible.&#xA;- Insertion des observations journalières en base de données.&#xA;&#xA;Règles fonctionnelles&#xA;- Données chargées pour une série de devise et une fréquence données.&#xA;- Intégrité des types et des formats (date, valeur, statut).&#xA;&#xA;Remarque&#xA;Ce Data Flow est exécuté uniquement si les données de la série cible ne sont pas déjà présentes en base.&#xA;"
+          ParentId="Package\DFT_DailyRateCurrency_CSV_to_SQL"
+          FontInfo="{x:Null}"
+          Size="614,263"
+          Id="9f9619d4-88ea-4b82-b9be-bc7edc2248b5"
+          TopLeft="547,44" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_DailyRateCurrency_CSV_to_SQL\DEST_Insert_Currency_Exchange_Rates_Daily">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
