@@ -1,0 +1,128 @@
+---
+title: "European Central Bank (ECB) – Exchange Rate Data Profiling & EDA"
+author: "sferrer"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+lang: fr
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    df_print: paged
+    theme: cosmo
+    highlight: tango
+    code_folding: none
+---
+
+```{r setup, include=FALSE}
+# Global chunk options
+knitr::opts_chunk$set(
+	echo = FALSE,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE
+)
+# Packages
+library(readr)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(skimr)
+library(here)
+library(knitr)
+
+# Custom project configuration
+source(here("config", "config.R"))
+# Custom profiling function
+source(here("scripts", "profile_csv.R"))
+```
+
+```{r batch-profiling, echo=FALSE}
+# Batch profiling of all CSV files
+# Retrieve the list of all CSV files located in the data directory.
+# - pattern = "\\.csv$"   → Only files ending with ".csv"
+# - full.names = TRUE     → Return full file paths (needed for reading)
+csv_files  <- list.files(
+  here(data_dir), 
+  pattern = "\\.csv$", 
+  full.names = TRUE)
+# Apply the profiling function to each CSV file.
+# purrr::map() iterates over the list of file paths and returns
+# a list of profiling results (one element per CSV).
+profiles <- purrr::map(csv_files, profile_csv)
+# Name the list using the file_names (without the path)
+names(profiles) <- basename(csv_files)
+```
+
+```{r render-all-profile-files, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
+# Render the profile of each file and dynamically generate the report sections
+purrr::iwalk(
+  .x = profiles,
+  .f = function(p, file_name) {
+# Section title and anchor for this file
+    name_no_ext <- sub("\\.csv$", "", file_name)
+    cat(sprintf("\n\n# File: %s {#%s}\n\n", file_name, name_no_ext))
+# Anchor to the other report
+    cat("\n\n[→ Link to overview report](02_Ecb_Exchange_Rate_Files_Overview.html#eda-overview)\n\n")
+# ---- File summary (dimensions) ----
+    file_size_fmt <- sprintf("%.2f Mo", p$file_size)
+    cat("- **File name :** ", p$file_name, "\n")
+    cat("- **File size :** ", file_size_fmt, "\n")
+    cat("- **Number of observations :** ", p$n_rows, "\n")
+    cat("- **Number of columns :** ", p$n_cols, "\n\n")
+    cat("- **Duplicates detecteds :**", if (p$has_duplicates) "Oui" else "Non", "\n\n")
+    cat("- **Number of duplicated lines :**", p$n_duplicates, "\n\n")
+
+# 1. Column profile
+    cat("## Column profile\n\n")
+    print(
+      kable(p$col_profile, 
+            caption = paste("Variable profile -", file_name)
+            )
+      )
+# 2. Date statistics
+    cat("\n\n## Date statistics\n\n")
+    print(kable(p$date_stats, 
+                caption = paste("Date statistics -", file_name)
+                )
+          )
+# 3. Numerical statistics
+    cat("\n\n## Numerical statistics\n\n")
+    print(kable(p$num_stats, 
+                caption = paste("Numerical statistics -", file_name)
+                )
+          )
+# 4. Skimr summary
+    cat("\n\n## Skimr summary\n\n")
+    skim_for_report <- p$skim %>%
+      dplyr::select(-numeric.hist)  
+    print(kable(skim_for_report, 
+                caption = paste("Skimr summary -", file_name)
+                )
+          )
+# 5. Raw data overview
+    cat("\n\n## Raw data overview\n\n")
+    print(
+      p$data %>%
+        head(10) %>%
+        kable(
+          caption = paste("Overview (first 10 lines) -", file_name),
+          align   = "l"
+        )
+    )
+# 6. Duplicated lines overview    
+    if (p$has_duplicates) {
+      cat("\n\n## Overview duplicated **\n\n")
+      print(kable(p$duplicated |>
+                   head(10),
+                   caption = paste("Overview (first 10 duplicated lines) -", file_name),
+                   align   = "l"
+                )
+      )
+    }
+# Link to TOC    
+    cat("[↑ Return to the beginning](#top)")
+  }
+)
+```
+

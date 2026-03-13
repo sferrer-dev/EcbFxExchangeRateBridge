@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="84956256-45c3-44e3-a7fb-8cb653599005" ChangeDateTime="02/15/2026 21:47:10">
+    <Property Name="ElementName" Value="[dbo].[exchange_currency_series_ref].[IX_exchange_currency_series_ref_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[exchange_currency_series_ref]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_exchange_currency_series_ref_currency]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d228c256-2f55-4d56-a41d-dcb4939d58fa" ChangeDateTime="02/17/2026 10:51:22">
+    <Property Name="ElementName" Value="[dbo].[exchange_rate_series].[id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[exchange_rate_series]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="rate_series_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="18545e80-931f-4156-a35f-c3f0e76ca75c" ChangeDateTime="02/17/2026 10:51:46">
+    <Property Name="ElementName" Value="[dbo].[exchange_rates_daily].[id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[exchange_rates_daily]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="rate_daily_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e2c3d285-c1b6-4345-8b67-90dde491f387" ChangeDateTime="02/17/2026 10:52:06">
+    <Property Name="ElementName" Value="[dbo].[exchange_rates_tariff_monthly].[id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[exchange_rates_tariff_monthly]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="rate_tariff_monthly_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6598cfd0-817b-4704-a61e-f829f3fee803" ChangeDateTime="02/17/2026 11:51:29">
+    <Property Name="ElementName" Value="[dbo].[exchange_rate_series].[currency]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[exchange_rate_series]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="currency2" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4d089672-a766-4cd8-9155-ddaa5deefa55" ChangeDateTime="02/17/2026 11:53:15">
+    <Property Name="ElementName" Value="[dbo].[exchange_rate_series].[currency2]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[exchange_rate_series]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="currency" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a97c56e7-4581-4cf1-bdf2-6fc78bb25c1b" ChangeDateTime="02/21/2026 19:51:43">
+    <Property Name="ElementName" Value="[dbo].[currency_ref].[currency_label]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[currency_ref]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="currency_name" />
+  </Operation>
+</Operations>

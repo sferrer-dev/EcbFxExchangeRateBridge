@@ -1,0 +1,2777 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/16/2026 10:57:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PEARL"
+  DTS:CreatorName="SFERRER\stephane"
+  DTS:DTSID="{12F37BDD-687A-4070-BBD0-135E04CD837D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="02_Load_EcbSeriesKeyRef_ForEuro"
+  DTS:PackageType="5"
+  DTS:VersionBuild="98"
+  DTS:VersionGUID="{18AAA86C-C484-4CFC-9CD3-D0703162FB67}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FFC_SeriesKeyForEur_Import]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{71829F64-69A7-41BE-910B-C701722F9A06}"
+      DTS:ObjectName="FFC_SeriesKeyForEur_Import">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::DownloadPath]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="D:\SSIS\Data\In\series_for_eur_ref_13032026.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="KEY"
+              DTS:DTSID="{EFF55F71-F4A6-4F27-8AA1-95E243C86200}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="FREQ"
+              DTS:DTSID="{0A2BCB6E-1F28-47D5-9661-5A01E6B44CC0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CURRENCY"
+              DTS:DTSID="{F53C0C0F-BA83-4081-8EF1-C1E0696F7BC3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CURRENCY_DENOM"
+              DTS:DTSID="{A7E7BD58-846A-4942-982F-71D4E35209BB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EXR_TYPE"
+              DTS:DTSID="{AD7F838F-46D1-418F-99CC-257A13B599AB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="EXR_SUFFIX"
+              DTS:DTSID="{CA15066C-D5D2-479D-89BF-C98519CCB37A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TIME_FORMAT"
+              DTS:DTSID="{C1C0D92F-5ACE-4E1C-9D1F-90A3D5B6B09F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BREAKS"
+              DTS:DTSID="{5E044D54-FFC5-4EEE-AE7D-0A0C62FAE9A1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COLLECTION"
+              DTS:DTSID="{C37C75EE-1E53-4893-BA7C-40A4F351A0EE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COMPILING_ORG"
+              DTS:DTSID="{D2DB8FB0-8B80-4A94-9B66-18DF114975E7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DISS_ORG"
+              DTS:DTSID="{880C6BBC-B8C1-4688-89E3-BC19B315E6B3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DOM_SER_IDS"
+              DTS:DTSID="{B097C762-ED24-44B0-99B9-A0B942BC64C9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PUBL_ECB"
+              DTS:DTSID="{0B667CB6-601A-4503-BB67-2DEB76E63ACF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PUBL_MU"
+              DTS:DTSID="{B6C8F2AB-C640-4118-A792-96129B6A3747}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PUBL_PUBLIC"
+              DTS:DTSID="{E6895269-D062-48B5-AF31-00DD4A19F643}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UNIT_INDEX_BASE"
+              DTS:DTSID="{EE64DF87-C33F-4C5A-98B6-238B8B940527}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="71"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COMPILATION"
+              DTS:DTSID="{13D43CD3-7A99-433B-B034-ED4498DB1E3C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="COVERAGE"
+              DTS:DTSID="{E0114E65-4CB4-489A-A7B1-185C26A94228}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DECIMALS"
+              DTS:DTSID="{0E4BC1C0-477D-4243-A86A-C5170E3178BE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NAT_TITLE"
+              DTS:DTSID="{4636AF63-10F3-40AC-A302-B374E8AE88C1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SOURCE_AGENCY"
+              DTS:DTSID="{5B28182A-FD34-43AD-842E-12D42DDDADBA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SOURCE_PUB"
+              DTS:DTSID="{1631BD43-F5C2-42EE-881C-2C9378D0983A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TITLE"
+              DTS:DTSID="{83D262F9-A75A-4AF7-97EC-6ECFC9494632}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="300"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TITLE_COMPL"
+              DTS:DTSID="{51182239-2CF8-4039-83F0-9C48677CB614}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="3"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UNIT"
+              DTS:DTSID="{32F60738-55BE-49F2-92AA-A35011A97FAA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="16"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UNIT_MULT"
+              DTS:DTSID="{9A999E2A-7F64-4560-8416-DD17A1541C33}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="ExchangeRate.log"
+      DTS:CreationName="Microsoft.LogProviderTextFile"
+      DTS:Description="Enregistre les entrées du journal pour les événements dans un fichier CSV"
+      DTS:DTSID="{95A07B3E-053C-4841-9365-E320C4FD6B39}"
+      DTS:ObjectName="ExchangeRateLog">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D72586F1-F8A3-4F84-85AA-AEC16524391A}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::pInFolder]  + @[User::Filename]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="DownloadPath">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\SSIS\Data\In\series_for_eur_ref_13032026.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{ED4D96C0-1D91-4F11-A69F-509890016F95}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="RIGHT(&quot;0&quot; + (DT_WSTR,2) DAY(GETDATE()), 2)&#xA;+ RIGHT(&quot;0&quot; + (DT_WSTR,2) MONTH(GETDATE()), 2)&#xA;+ (DT_WSTR,4) YEAR(GETDATE())"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileDate">
+      <DTS:VariableValue
+        DTS:DataType="8">13032026</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7288AF8D-0064-4E8C-8E39-E1FCC3321835}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;series_for_eur_ref_&quot;+ @[User::FileDate] + &quot;.csv&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Filename">
+      <DTS:VariableValue
+        DTS:DataType="8">series_for_eur_ref_13032026.csv</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C22DBD7B-E53F-4595-9A98-7FC32EB69859}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="SeriesExist">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CCF9B986-425A-4FDE-BE33-8F7FA9866BAE}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="SeriesKeySdmx">
+      <DTS:VariableValue
+        DTS:DataType="8">D..EUR.SP00.A</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{40A63150-C87B-4033-AB6F-1742E88817B2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::pEcbDataApiBaseUrl] + @[User::SeriesKeySdmx] + &#xA;&quot;?detail=nodata&amp;format=csvdata&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Url">
+      <DTS:VariableValue
+        DTS:DataType="8">https://data-api.ecb.europa.eu/service/data/EXR/D..EUR.SP00.A?detail=nodata&amp;format=csvdata</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="2">
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{95A07B3E-053C-4841-9365-E320C4FD6B39}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Load_Currency_Series_Ref"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{A99DC60E-F230-4DA6-B226-34D83D5F613A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Load_Currency_Series_Ref"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="DEST_Insert_Exchange_Currency_Series_Ref"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[exchange_currency_series_ref]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Connections[OleDbConnection]"
+                  connectionManagerID="{FCE8F177-2F0E-4523-92E9-DAA8D3404395}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Localhost.ExchangeRatesDB]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].Columns[CURRENCY]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="CURRENCY"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[currency]"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[CURRENCY]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].Columns[TITLE]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="TITLE"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[title]"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TITLE]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].Columns[TITLE_COMPL]"
+                      cachedDataType="wstr"
+                      cachedLength="300"
+                      cachedName="TITLE_COMPL"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[title_compl]"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TITLE_COMPL]" />
+                    <inputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].Columns[KEY]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="KEY"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[series_key]"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[KEY]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[series_key]"
+                      dataType="wstr"
+                      length="30"
+                      name="series_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[currency]"
+                      dataType="wstr"
+                      length="3"
+                      name="currency" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="200"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB].ExternalColumns[title_compl]"
+                      dataType="wstr"
+                      length="300"
+                      name="title_compl" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Source du fichier plat;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Source du fichier plat"
+              localeId="1033"
+              name="SRC_SeriesKeyRef_to_EUR_CSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Spécifie si les colonnes dont la longueur est zéro sont traitées comme des valeurs NULL."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom d'une colonne de sortie contenant le nom du fichier. Si aucun nom n'est spécifié, aucune colonne de sortie contenant le nom du fichier ne sera générée."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FFC_SeriesKeyForEur_Import]"
+                  connectionManagerRefId="Package.ConnectionManagers[FFC_SeriesKeyForEur_Import]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat]"
+                  name="Sortie de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[KEY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[KEY]"
+                      length="30"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[KEY]"
+                      name="KEY"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[CURRENCY]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY]"
+                      length="3"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[CURRENCY]"
+                      name="CURRENCY"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TITLE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE]"
+                      length="200"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TITLE]"
+                      name="TITLE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TITLE_COMPL]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE_COMPL]"
+                      length="300"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TITLE_COMPL]"
+                      name="TITLE_COMPL"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[FREQ]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[FREQ]"
+                      length="1"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[FREQ]"
+                      name="FREQ"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[CURRENCY_DENOM]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY_DENOM]"
+                      length="3"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[CURRENCY_DENOM]"
+                      name="CURRENCY_DENOM"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[EXR_TYPE]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_TYPE]"
+                      length="4"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[EXR_TYPE]"
+                      name="EXR_TYPE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[EXR_SUFFIX]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_SUFFIX]"
+                      length="1"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[EXR_SUFFIX]"
+                      name="EXR_SUFFIX"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TIME_FORMAT]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TIME_FORMAT]"
+                      length="3"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[TIME_FORMAT]"
+                      name="TIME_FORMAT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[BREAKS]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[BREAKS]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[BREAKS]"
+                      name="BREAKS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COLLECTION]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COLLECTION]"
+                      length="1"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COLLECTION]"
+                      name="COLLECTION"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COMPILING_ORG]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILING_ORG]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COMPILING_ORG]"
+                      name="COMPILING_ORG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[DISS_ORG]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DISS_ORG]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[DISS_ORG]"
+                      name="DISS_ORG"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[DOM_SER_IDS]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DOM_SER_IDS]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[DOM_SER_IDS]"
+                      name="DOM_SER_IDS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[PUBL_ECB]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_ECB]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[PUBL_ECB]"
+                      name="PUBL_ECB"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[PUBL_MU]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_MU]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[PUBL_MU]"
+                      name="PUBL_MU"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[PUBL_PUBLIC]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_PUBLIC]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[PUBL_PUBLIC]"
+                      name="PUBL_PUBLIC"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[UNIT_INDEX_BASE]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_INDEX_BASE]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[UNIT_INDEX_BASE]"
+                      name="UNIT_INDEX_BASE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COMPILATION]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILATION]"
+                      length="71"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COMPILATION]"
+                      name="COMPILATION"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COVERAGE]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COVERAGE]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[COVERAGE]"
+                      name="COVERAGE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[DECIMALS]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DECIMALS]"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[DECIMALS]"
+                      name="DECIMALS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[NAT_TITLE]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[NAT_TITLE]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[NAT_TITLE]"
+                      name="NAT_TITLE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[SOURCE_AGENCY]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_AGENCY]"
+                      length="3"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[SOURCE_AGENCY]"
+                      name="SOURCE_AGENCY"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[SOURCE_PUB]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_PUB]"
+                      length="255"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[SOURCE_PUB]"
+                      name="SOURCE_PUB"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[UNIT]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT]"
+                      length="3"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[UNIT]"
+                      name="UNIT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[UNIT_MULT]"
+                      dataType="i1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_MULT]"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].Columns[UNIT_MULT]"
+                      name="UNIT_MULT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[KEY]"
+                      dataType="wstr"
+                      length="30"
+                      name="KEY" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY]"
+                      dataType="wstr"
+                      length="3"
+                      name="CURRENCY" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE]"
+                      dataType="wstr"
+                      length="200"
+                      name="TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TITLE_COMPL]"
+                      dataType="wstr"
+                      length="300"
+                      name="TITLE_COMPL" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[FREQ]"
+                      codePage="65001"
+                      dataType="str"
+                      length="1"
+                      name="FREQ" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[CURRENCY_DENOM]"
+                      codePage="65001"
+                      dataType="str"
+                      length="3"
+                      name="CURRENCY_DENOM" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_TYPE]"
+                      codePage="65001"
+                      dataType="str"
+                      length="4"
+                      name="EXR_TYPE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[EXR_SUFFIX]"
+                      codePage="65001"
+                      dataType="str"
+                      length="1"
+                      name="EXR_SUFFIX" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[TIME_FORMAT]"
+                      codePage="65001"
+                      dataType="str"
+                      length="3"
+                      name="TIME_FORMAT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[BREAKS]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="BREAKS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COLLECTION]"
+                      codePage="65001"
+                      dataType="str"
+                      length="1"
+                      name="COLLECTION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILING_ORG]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="COMPILING_ORG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DISS_ORG]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="DISS_ORG" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DOM_SER_IDS]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="DOM_SER_IDS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_ECB]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="PUBL_ECB" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_MU]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="PUBL_MU" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[PUBL_PUBLIC]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="PUBL_PUBLIC" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_INDEX_BASE]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="UNIT_INDEX_BASE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COMPILATION]"
+                      codePage="65001"
+                      dataType="str"
+                      length="71"
+                      name="COMPILATION" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[COVERAGE]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="COVERAGE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[DECIMALS]"
+                      dataType="i1"
+                      name="DECIMALS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[NAT_TITLE]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="NAT_TITLE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_AGENCY]"
+                      codePage="65001"
+                      dataType="str"
+                      length="3"
+                      name="SOURCE_AGENCY" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[SOURCE_PUB]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="SOURCE_PUB" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT]"
+                      codePage="65001"
+                      dataType="str"
+                      length="3"
+                      name="UNIT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat].ExternalColumns[UNIT_MULT]"
+                      dataType="i1"
+                      name="UNIT_MULT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Colonne de sortie d'erreur de source de fichier plat"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      name="Colonne de sortie d'erreur de source de fichier plat" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Load_Currency_Series_Ref.Paths[Sortie de source de fichier plat]"
+              endId="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source de fichier plat"
+              startId="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV.Outputs[Sortie de source de fichier plat]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Check_SeriesRef_Exists"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{729b7db7-1fdf-4d83-b23d-88af300d5527}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Check_SeriesRef_Exists"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2" />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FCE8F177-2F0E-4523-92E9-DAA8D3404395}"
+          SQLTask:SqlStatementSource="SELECT&#xA;    CAST(&#xA;        CASE &#xA;            WHEN EXISTS (SELECT 1 FROM dbo.exchange_currency_series_ref)&#xA;            THEN 1 &#xA;            ELSE 0 &#xA;        END&#xA;    AS bit) AS series_exist;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="series_exist"
+            SQLTask:DtsVariableName="User::SeriesExist" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL_Seed_ExchangeRateSeries"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F8932275-1D07-4E16-893C-883CF1988226}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL_Seed_ExchangeRateSeries"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="2">
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnPostValidate"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnTaskFailed"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{FCE8F177-2F0E-4523-92E9-DAA8D3404395}"
+          SQLTask:SqlStatementSource="EXEC dbo.usp_SeedExchangeRateSeries;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ST_Download_ECB_SeriesKeyRef_CSV"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{01E5B708-83A9-4B21-9ED5-470323722A16}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ST_Download_ECB_SeriesKeyRef_CSV"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">4,7,OnError,13,OnInformation,9,OnWarning,18,ScriptTaskLogEntry</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnInformation"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnWarning"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:Property
+          DTS:EventName="ScriptTaskLogEntry"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">0</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">0</DTS:Property>
+        </DTS:Property>
+        <DTS:SelectedLogProviders>
+          <DTS:SelectedLogProvider
+            DTS:InstanceID="{95A07B3E-053C-4841-9365-E320C4FD6B39}" />
+        </DTS:SelectedLogProviders>
+      </DTS:LoggingOptions>
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\ST_Download_ECB_SeriesKeyRef_CSV.EventHandlers[OnError]"
+          DTS:CreationName="OnError"
+          DTS:DTSID="{2253E11A-FD8E-426E-9058-99EEF660D291}"
+          DTS:EventID="10485920"
+          DTS:EventName="OnError"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Propriété de propagation de l'événement"
+              DTS:DTSID="{3DE62AAA-761D-4F02-83B2-D32AB03A6640}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables />
+        </DTS:EventHandler>
+        <DTS:EventHandler
+          DTS:refId="Package\ST_Download_ECB_SeriesKeyRef_CSV.EventHandlers[OnInformation]"
+          DTS:CreationName="OnInformation"
+          DTS:DTSID="{4F76C2A6-4717-4B14-BFC0-D6249AEA459E}"
+          DTS:EventID="10485920"
+          DTS:EventName="OnInformation"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Propriété de propagation de l'événement"
+              DTS:DTSID="{B0D6BF64-F149-45D4-92B8-2F8523D0615B}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables />
+        </DTS:EventHandler>
+        <DTS:EventHandler
+          DTS:refId="Package\ST_Download_ECB_SeriesKeyRef_CSV.EventHandlers[OnWarning]"
+          DTS:CreationName="OnWarning"
+          DTS:DTSID="{CA4DD63C-7EED-4E81-AF14-9E852EA91ADF}"
+          DTS:EventID="8388816"
+          DTS:EventName="OnWarning"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="Propriété de propagation de l'événement"
+              DTS:DTSID="{B45FE82A-D1D3-4358-9A29-CC937993A70A}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables />
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_77cc94c7503c4103b84af64a079f9d1d"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadOnlyVariables="User::DownloadPath,User::Url">
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_77cc94c7503c4103b84af64a079f9d1d")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_77cc94c7503c4103b84af64a079f9d1d")]
+[assembly: AssemblyCopyright("Copyright @  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="packages.config"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="System.IO" version="4.3.0" targetFramework="net47" />
+</packages>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_77cc94c7503c4103b84af64a079f9d1d.Properties.Settings.get_Default():ST_77cc94c7503c4103b84af64a079f9d1d.Properties.Sett" +
+    "ings")]
+
+namespace ST_77cc94c7503c4103b84af64a079f9d1d.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Namespaces
+using System;
+#endregion
+
+namespace ST_77cc94c7503c4103b84af64a079f9d1d
+{
+
+    // Point d'entrée obligatoire pour une Script Task SSIS
+    [Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+    public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+    {
+        /// <summary>
+        /// Méthode principale appelée par SSIS.
+        /// IMPORTANT : en Script Task, Main() ne peut pas être async.
+        /// On exécute donc le code asynchrone via GetAwaiter().GetResult().
+        /// </summary>
+        public void Main()
+        {
+            try
+            {
+                string url = Convert.ToString(Dts.Variables["User::Url"].Value);
+                string downloadPath = Convert.ToString(Dts.Variables["User::DownloadPath"].Value);
+
+                var downloader = new EcbHttpDownloader();
+
+                LogInformation("Download ECB CSV", "Début du téléchargement : " + url);
+
+                downloader.DownloadAsync(url, downloadPath).GetAwaiter().GetResult();
+
+                // Si tout s'est bien passé, on marque la tâche comme réussie
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            catch (Exception ex)
+            {
+                // En cas d'erreur bloquante, on loggue une erreur SSIS
+                // FireError => message rouge dans les logs + exploitation possible en prod
+                Dts.Events.FireError(
+                    0,
+                    "Download ECB CSV",
+                    ex.Message,
+                    string.Empty,
+                    0);
+
+                // On force l'échec de la Script Task
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+        }
+
+        /// <summary>
+        /// Log une information dans les logs SSIS.
+        /// </summary>
+        private void LogInformation(string title, string message)
+        {
+            bool fireAgain = false;
+
+            Dts.Events.FireInformation(
+                0,              // InformationCode
+                title,          // SubComponent
+                message,        // Description
+                string.Empty,   // HelpFile
+                0,              // HelpContext
+                ref fireAgain
+            );
+        }
+        #region ScriptResults declaration
+        /// <summary>
+        /// Enum standard généré par SSIS
+        /// pour définir le résultat de la Script Task
+        /// </summary>
+        enum ScriptResults
+        {
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ST_77cc94c7503c4103b84af64a079f9d1d.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{060979E2-894A-427F-B3B1-2EC894C4BE80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_77cc94c7503c4103b84af64a079f9d1d</RootNamespace>
+    <AssemblyName>ST_77cc94c7503c4103b84af64a079f9d1d</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Stephane.SFERRER\AppData\Local\Temp\Vsta\SSIS_ST150\VstaFBIdVd7L10__VJket7gycSw\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Stephane.SFERRER\AppData\Local\Temp\Vsta\SSIS_ST150\VstaSTCGeWQ7vky1DhR_DD5fjQ\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Stephane.SFERRER\AppData\Local\Temp\Vsta\SSIS_ST150\VstaSTCGeWQ7vky1DhR_DD5fjQ\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Stephane.SFERRER\AppData\Local\Temp\Vsta\SSIS_ST150\VstaSTCGeWQ7vky1DhR_DD5fjQ\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Stephane.SFERRER\AppData\Local\Temp\Vsta\SSIS_ST150\VstaSTCGeWQ7vky1DhR_DD5fjQ\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Stephane.SFERRER\AppData\Local\Temp\Vsta\SSIS_ST150\VstaSTCGeWQ7vky1DhR_DD5fjQ\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>C:\Users\Stephane.SFERRER\AppData\Local\Temp\Vsta\SSIS_ST150\VstaSTCGeWQ7vky1DhR_DD5fjQ\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="EcbHttpDownloader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_77cc94c7503c4103b84af64a079f9d1d</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_77cc94c7503c4103b84af64a079f9d1d</msb:DisplayName>
+    <msb:ProjectId>{89300F8D-1F19-447A-9EC4-E3A8C234C870}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_77cc94c7503c4103b84af64a079f9d1d.csproj" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="EcbHttpDownloader.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="packages.config" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="EcbHttpDownloader.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+namespace ST_77cc94c7503c4103b84af64a079f9d1d
+{
+    /*
+        --------------------------------------------------------------------
+        Classe : EcbHttpDownloader
+        --------------------------------------------------------------------
+        Objectif :
+        Télécharger un fichier distant (ex : dataset ECB) via HTTP
+        et l’enregistrer sur le disque local.
+
+        Cette classe est utilisée dans une Script Task SSIS afin
+        d'isoler la logique réseau du ScriptMain.cs.
+
+        Avantages :
+        - code plus lisible
+        - logique réutilisable
+        - meilleure maintenabilité du package SSIS
+        --------------------------------------------------------------------
+    */
+    internal sealed class EcbHttpDownloader
+    {
+        /*
+            Méthode principale de téléchargement.
+
+            url          : adresse HTTP du fichier à télécharger
+            downloadPath : chemin local où enregistrer le fichier
+
+            Le téléchargement est asynchrone afin de ne pas bloquer
+            inutilement le thread de la Script Task.
+        */
+        public async Task DownloadAsync(string url, string downloadPath)
+        {
+            // Vérifie la validité des paramètres fournis
+            ValidateInputs(url, downloadPath);
+
+            // Configure les paramètres de sécurité réseau (.NET)
+            ConfigureSecurity();
+
+            // Vérifie que le dossier cible existe
+            EnsureTargetDirectoryExists(downloadPath);
+
+            /*
+                Création du HttpClient.
+
+                HttpClient est la classe standard .NET pour faire
+                des appels HTTP (API REST, téléchargement de fichiers, etc.).
+            */
+            using (var http = CreateHttpClient())
+
+            /*
+                GetAsync avec ResponseHeadersRead :
+                - permet de commencer la lecture du flux immédiatement
+                - évite de charger tout le fichier en mémoire
+                - idéal pour les téléchargements de fichiers (pattern streaming)
+            */
+            using (HttpResponseMessage response = await http
+                .GetAsync(url, HttpCompletionOption.ResponseHeadersRead)
+                .ConfigureAwait(false))
+            {
+                /*
+                    Vérification du statut HTTP.
+
+                    Si la requête retourne une erreur (404, 500, etc.)
+                    on lève explicitement une exception détaillée.
+                */
+                if (!response.IsSuccessStatusCode)
+                {
+                    // Lecture partielle du contenu retourné (si disponible)
+                    string bodySnippet = await SafeReadSnippetAsync(response).ConfigureAwait(false);
+
+                    throw new HttpRequestException(
+                        "HTTP " + (int)response.StatusCode +
+                        " (" + response.ReasonPhrase + "). " +
+                        "URL=" + url + ". " +
+                        "Réponse (extrait)=" + bodySnippet);
+                }
+
+                /*
+                    Lecture du flux HTTP sous forme de Stream.
+
+                    Cela permet de traiter le fichier en streaming
+                    sans le charger entièrement en mémoire.
+                */
+                using (Stream contentStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+
+                /*
+                    Création du fichier cible.
+
+                    FileMode.Create :
+                    - écrase le fichier s’il existe déjà
+                */
+                using (FileStream fileStream = new FileStream(
+                    downloadPath,
+                    FileMode.Create,
+                    FileAccess.Write,
+                    FileShare.None))
+                {
+                    /*
+                        Copie du flux HTTP vers le fichier.
+
+                        Pattern classique :
+                        Stream HTTP -> FileStream disque
+                    */
+                    await contentStream.CopyToAsync(fileStream).ConfigureAwait(false);
+                }
+            }
+        }
+
+        /*
+            Vérifie les paramètres d'entrée.
+
+            Dans un contexte ETL, valider les entrées évite
+            des erreurs difficiles à diagnostiquer dans SSIS.
+        */
+        private static void ValidateInputs(string url, string downloadPath)
+        {
+            if (string.IsNullOrWhiteSpace(url))
+                throw new ArgumentException("Le paramètre url est vide.");
+
+            if (string.IsNullOrWhiteSpace(downloadPath))
+                throw new ArgumentException("Le paramètre downloadPath est vide.");
+        }
+
+        /*
+            Configuration du protocole de sécurité réseau.
+
+            TLS 1.2 est requis par la plupart des API modernes
+            (dont les services de la Banque Centrale Européenne).
+        */
+        private static void ConfigureSecurity()
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            // Désactive une optimisation HTTP peu utile ici
+            ServicePointManager.Expect100Continue = false;
+        }
+
+        /*
+            Vérifie que le dossier cible existe.
+
+            Si le dossier n'existe pas, il est créé automatiquement.
+            Cela évite les erreurs "Directory not found".
+        */
+        private static void EnsureTargetDirectoryExists(string downloadPath)
+        {
+            string dir = Path.GetDirectoryName(downloadPath);
+
+            if (!string.IsNullOrWhiteSpace(dir) && !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+        }
+
+        /*
+            Création et configuration du client HTTP.
+
+            Bonnes pratiques appliquées :
+            - timeout défini
+            - headers Accept explicites
+            - User-Agent identifié
+        */
+        private static HttpClient CreateHttpClient()
+        {
+            var http = new HttpClient
+            {
+                // Temps maximum d’attente de la requête
+                Timeout = TimeSpan.FromSeconds(60)
+            };
+
+            /*
+                Headers HTTP Accept
+
+                On indique au serveur les formats que l'on accepte.
+                Ici principalement CSV ou texte brut.
+            */
+            http.DefaultRequestHeaders.Accept.Clear();
+            http.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("text/csv"));
+            http.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("text/plain"));
+
+            /*
+                User-Agent
+
+                Permet au serveur d’identifier le client.
+                Utile pour :
+                - debugging
+                - logs serveur
+            */
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("SSIS-ScriptTask/1.0");
+
+            return http;
+        }
+
+        /*
+            Lecture sécurisée du contenu retourné par le serveur.
+
+            Si une erreur HTTP se produit, on tente de lire
+            une partie du contenu pour faciliter le diagnostic.
+
+            La lecture est limitée à 300 caractères afin
+            d'éviter des messages d'erreur trop volumineux.
+        */
+        private static async Task<string> SafeReadSnippetAsync(HttpResponseMessage response)
+        {
+            try
+            {
+                string content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                if (string.IsNullOrEmpty(content))
+                    return "<vide>";
+
+                return content.Length <= 300
+                    ? content
+                    : content.Substring(0, 300) + "...";
+            }
+            catch
+            {
+                // Si le contenu ne peut pas être lu
+                return "<impossible de lire le contenu>";
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_77cc94c7503c4103b84af64a079f9d1d.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_77cc94c7503c4103b84af64a079f9d1d.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_77cc94c7503c4103b84af64a079f9d1d.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_77cc94c7503c4103b84af64a079f9d1d.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_77cc94c7503c4103b84af64a079f9d1d.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_77cc94c7503c4103b84af64a079f9d1d.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAJXgs2kAAAAAAAAAAOAAIiALATAAACYAAAAIAAAAAAAA+kQA
+AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAKhEAABPAAAAAGAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAACUAAAAgAAAAJgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAYAAAAAYAAAAoAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAIAAAAACAAAALgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADc
+RAAAAAAAAEgAAAACAAUAWCgAAJgbAAABAAAAAAAAAPBDAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABMwAgA/AAAAAQAAERIAKBQAAAp9BQAABBIAA30GAAAEEgAE
+fQcAAAQSABV9BAAABBIAfAUAAAQSACgBAAArEgB8BQAABCgWAAAKKp4CKBcAAAosC3IBAABwcxgA
+AAp6AygXAAAKLAtyNwAAcHMYAAAKeipGIAAMAAAoGQAAChYoGgAACioAAAATMAEAHwAAAAIAABEC
+KBsAAAoKBigXAAAKLQ8GKBwAAAotBwYoHQAACiYqABMwAwBzAAAAAAAAAHMeAAAKJSMAAAAAAABO
+QCgfAAAKbyAAAAolbyEAAApvIgAACm8jAAAKJW8hAAAKbyIAAApyfwAAcHMkAAAKbyUAAAolbyEA
+AApvIgAACnKRAABwcyQAAApvJQAACiVvIQAACm8mAAAKcqcAAHBvJwAACioAEzACADcAAAADAAAR
+EgAoKAAACn0RAAAEEgACfRIAAAQSABV9EAAABBIAfBEAAAQSACgCAAArEgB8EQAABCgqAAAKKh4C
+KCsAAAoqABswBgCwAAAABAAAEQIoLAAACm8tAAAKcs8AAHBvLgAACm8vAAAKKDAAAAoKAigsAAAK
+by0AAApy4wAAcG8uAAAKby8AAAooMAAACgtzBwAABgJyCQEAcHIrAQBwBigxAAAKKAkAAAYGB28B
+AAAGbzIAAAoMEgIoMwAACgIoLAAAChZvNAAACt4yDQIoLAAACm81AAAKFnIJAQBwCW82AAAKfjcA
+AAoWbzgAAAomAigsAAAKF280AAAK3gAqARAAAAAAAAB9fQAyHAAAARMwBwAeAAAABQAAERYKAigs
+AAAKbzUAAAoWAwR+NwAAChYSAG85AAAKKh4CKDoAAAoqrn4BAAAELR5yYQEAcNAEAAACKDsAAApv
+PAAACnM9AAAKgAEAAAR+AQAABCoafgIAAAQqHgKAAgAABCoafgMAAAQqHgIoPgAACioucxAAAAaA
+AwAABCobMAUAcQMAAAYAABECewQAAAQKBhk2LAJ7BgAABAJ7BwAABCgCAAAGKAMAAAYCewcAAAQo
+BAAABgIoBQAABn0IAAAEAAYsUwYXWRg2eAJ7CAAABAJ7BgAABBdvPwAAChZvQAAACg0SAyhBAAAK
+DBICKEIAAAotPwIWJQp9BAAABAIIfQoAAAQCfAUAAAQSAgIoAwAAK93iAgAAAnsKAAAEDAJ8CgAA
+BP4VBgAAGwIVJQp9BAAABBICKEQAAAoLAgd9CQAABAAGF1lFAwAAAFkAAAAxAQAAXwEAAAJ7CQAA
+BG9FAAAKOtMAAAACewkAAAQoBgAABhZvRgAAChMGEgYoRwAAChMFEgUoSAAACi1BAhclCn0EAAAE
+AhEFfQsAAAQCfAUAAAQSBQIoBAAAK91JAgAAAnsLAAAEEwUCfAsAAAT+FQkAABsCFSUKfQQAAAQS
+BShJAAAKEwQejSsAAAElFnLTAQBwoiUXAnsJAAAEb0oAAAoTBxIHKEsAAAqiJRhy3wEAcKIlGQJ7
+CQAABG9MAAAKoiUacuUBAHCiJRsCewYAAASiJRxy9QEAcKIlHREEoihNAAAKc04AAAp6AnsJAAAE
+b08AAApvUAAAChZvUQAAChMKEgooUgAAChMJEgkoUwAACi1BAhglCn0EAAAEAhEJfQ0AAAQCfAUA
+AAQSCQIoBQAAK91xAQAAAnsNAAAEEwkCfA0AAAT+FQwAABsCFSUKfQQAAAQSCShUAAAKEwgCEQh9
+DAAABAAGGS4UAgJ7BwAABBgYFnNVAAAKfQ4AAAQABhkuTwJ7DAAABAJ7DgAABG9WAAAKFm9XAAAK
+EwwSDChYAAAKEwsSCyhZAAAKLUECGSUKfQQAAAQCEQt9DwAABAJ8BQAABBILAigGAAAr3dYAAAAC
+ew8AAAQTCwJ8DwAABP4VGwAAAQIVJQp9BAAABBILKFoAAAreGAYWLxMCew4AAAQsCwJ7DgAABG9b
+AAAK3AIUfQ4AAATeGAYWLxMCewwAAAQsCwJ7DAAABG9bAAAK3AIUfQwAAATeGAYWLxMCewkAAAQs
+CwJ7CQAABG9bAAAK3AIUfQkAAATeGAYWLxMCewgAAAQsCwJ7CAAABG9bAAAK3AIUfQgAAATeGRMN
+Ah/+fQQAAAQCfAUAAAQRDShcAAAK3hMCH/59BAAABAJ8BQAABChdAAAKKgAAAEF8AAACAAAARwIA
+AHkAAADAAgAAGAAAAAAAAAACAAAALgIAALMAAADhAgAAGAAAAAAAAAACAAAAugAAAEgCAAACAwAA
+GAAAAAAAAAACAAAAOAAAAOsCAAAjAwAAGAAAAAAAAAAAAAAABwAAAD0DAABEAwAAGQAAABwAAAE2
+AnwFAAAEAyheAAAKKgAAGzADAO0AAAAHAAARAnsQAAAECgYmAAYsTAJ7EgAABG9PAAAKb18AAAoW
+b0YAAAoTBBIEKEcAAAoNEgMoSAAACi0/AhYlCn0QAAAEAgl9EwAABAJ8EQAABBIDAigHAAAr3ZMA
+AAACexMAAAQNAnwTAAAE/hUJAAAbAhUlCn0QAAAEEgMoSQAACgwIKGEAAAosCHIfAgBwC95LCG9i
+AAAKICwBAAAxGAgWICwBAABvYwAACnItAgBwKDEAAAorAQgL3iImcjUCAHAL3hkTBQIf/n0QAAAE
+AnwRAAAEEQUoZAAACt4UAh/+fRAAAAQCfBEAAAQHKGUAAAoqAAAAARwAAAAACgCstgAJDQAAAQAA
+BwC4vwAZHAAAATYCfBEAAAQDKGYAAAoqAABCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAF
+AGwAAACUCAAAI34AAAAJAAB0CwAAI1N0cmluZ3MAAAAAdBQAAHgCAAAjVVMA7BYAABAAAAAjR1VJ
+RAAAAPwWAACcBAAAI0Jsb2IAAAAAAAAAAgAAAVcfogsJCwAAAPoBMwAWAAABAAAARgAAAAgAAAAW
+AAAAFQAAAAsAAAACAAAAZgAAAAIAAAAWAAAABwAAAAIAAAADAAAABAAAAAQAAAAMAAAAAQAAAAUA
+AAABAAAAAwAAAAcAAAAAANkGAQAAAAAABgARBfcIBgCgBfcIBgAqBNgIDwBrCQAABgBXBKMHBgD0
+BKMHBgDVBKMHBgCHBaMHBgAxBaMHBgBKBaMHBgCJBKMHBgCkBBsGBgCCCi4HBgA2Ay4HBgBuBPcI
+BgCsBsAJCgDmChgIBgA2AMAJCgBIAhgIBgDyA/cIBgAcAy4HBgDsAvcIBgAcAPcIXwCgCAAABgAe
+B/AABgB5AvcIawCgCAAABgD0By4HBgBACPcIBgAaB/AABgC9BNgIBgBZAPcIDgBlBYgGDgB1A4gG
+BgCqCPcIBgA1By4HBgANBNgIBgBoCBcJBgD+B44HEgDSA8MGEgA+BMMGEgCRA3kHBgA3Bi4HBgDX
+By4HEgB4CIkKEgAmA4kKBgBQBvAABgBKC/AABgAKCPAABgBGBy4HCgDvCdcJCgA9ANcJCgDfBdcJ
+CgDIBdcJDgCxBogGFgCtCcwCFgBkAswCBgAaCy4HDgCMCIgGBgCRAi4HBgA7C6MHCgC1BxgIEgAM
+AokKBgByAC4HCgDpBxgICgD9ChgIBgAzAvAABgAcCvAABgA7A/AABgBtAi4HAAAAAOcAAAAAAAEA
+AQAAARAALgiGATUAAQABAAEAEABPB4YBiQABAAgAAAAQAB4Jegk1AAEACwAAARAAtwl6CakAAwAP
+AAMBEAABAAAAVQAEABIAAwEQAMwAAABVABAAFAADAQAANwoAAJEAFAAWABEAOgeVAhEAZQOaAhEA
+7QGfAgYA5wOjAgYAVwimAgYAFgcHAQYASAYHAQEAeACqAgEAigCuAgEAFQCyAgEAgwC6AgEAoADB
+AgEAmQDFAgEAuwDNAgEAtADRAgYA5wOjAgYAVwjVAgYAugOuAgEAFQC6AgYGGQGjAlaAJwrdAlaA
+RQPdAlAgAAAAAIYAKgHhAgEAmyAAAAAAkQBsCugCAwDDIAAAAACRAFQL7gIFANggAAAAAJEAUAry
+AgUABCEAAAAAkQDgCvcCBgCEIQAAAACRAHEB/AIGAMchAAAAAIYYywgGAAcA0CEAAAAAhgBVBwYA
+BwCcIgAAAACBAGoHBgMHAMYiAAAAAIYYywgGAAkAxyEAAAAAgxjLCAYACQDOIgAAAACTCGQIDAMJ
+APoiAAAAAJMITQMSAwkAASMAAAAAkwhZAxgDCQAJIwAAAACWCKMKHwMKABAjAAAAAIYYywgGAAoA
+GCMAAAAAkRjRCO4CCgAkIwAAAADhAS4LBgAKACAnAAAAAOEB/wIbAAoAMCcAAAAA4QEuCwYACwBI
+KAAAAADhAf8CGwALAAAAAQAWBwAAAgBIBgAAAQAWBwAAAgBIBgAAAQBIBgAAAQC6AwAAAQC1AgAA
+AgBcAgAAAQD/BQAAAQAPAwAAAQAPAwYAWQAHAFkACQDLCAEAEQDLCAYAGQDLCAoAKQDLCBAAMQDL
+CBAAOQDLCBAAQQDLCBAASQDLCBAAUQDLCBAAWQDLCBAAYQDLCBAAeQDLCBUAoQDLCAYAsQAuCwYA
+sQD/AhsA+QDLCAYACQHLCAYAKQHLCAYASQHLCCEA6QDLAy0A6QAUCzIA6QBgBj8AWQHaAUQAYQHL
+CBAAaQEBB0kAaQEFBlAAeQG7AlkAgQFlCkQAgQFEC14AiQDLCAYAkQHrCGUAiQAiC2wAiQACCnMA
+mQEJC3kADAAoCAYAqQHLCBAADACvAY0AmQHSCpMAFACqARAAHADLA7MAHAAUCzIAHABgBsIAaQDL
+CAYAEQEvCtUAuQGpCdsAwQElB+EAyQG+BegA0QE1BuwAWQF7CvEAgQC2CPcAGQG+CgYAuQGvCgEA
+uQFFCv0A4QA8AgMBWQFuCwcB2QHBCAoB2QFaBxcBEQHLCAYAcQCjAiIBcQA3CyoBMQHLCDABUQHL
+CAYAiQBoAWoBJACUCn4BLAC2CI8BNADKAZ8B6QCzAaMBNAC+CrkBmQAbAp8BPACUCn4BRAC2CI8B
+TADKAZ8BTAC+CrkBmQD9AdoBAQI1BgMBmQCpAwMBWQF7CuABCQLLCBAAmQDxCuYBEQJKAewBVACU
+Cn4BXAC2CI8BZADKAZ8BZAC+CrkB8QDLCBUCyQBcASMCgQCUCioC0QC2CDAC2QDKAZ8B2QC+CgYA
+MQLDAwYA6QDKBzwC6QDICgYA6QD/AhsAEQI4AVQCHACzAaMBWQFmC0QAWQFVBmYCWQE+BmoCHADK
+BzwCHADICo0AHAD/AhsACABUAIsCCABYAJACIABjAPYDKQCbAF0DLgALADUDLgATAD4DLgAbAF0D
+LgAjAGYDLgArAI8DLgAzAI8DLgA7AI8DLgBDAGYDLgBLAJUDLgBTAI8DLgBbAKwDSQCbAF0DYQBr
+AJACYwCLAJACgwCTAJACwABjAEUEwwBrAJAC4wBrAJACYAKDAJACoAKDAJACKABVAKcAywATATgB
+QgIEAAEABQADAAAAaAgkAwAAbQMqAwAApwowAwIADAADAAIADQAFAAEADgAFAAIADwAHAAYAJAAd
+AAYAJgAfAAcAKAAdAAcAKgAfAIQAngCsAHcBiAGYAb4BxAHKAfUB/AEDAgSAAAABAAAAYCWSTQAA
+AAAAAIYBAAAEAAAAAAAAAAAAAABwAiEBAAAAAAQAAQABAAMAAAAAAHkCGAgAAAAADwAAAAAAAAAA
+AAAAggJpBgAAAAAEAAAAAAAAAAAAAABwAi4HAAAAAA8AAAAAAAAAAAAAAIIC+gAAAAAAAAAAAAEA
+AAAoCQAABgACAAcAAgAIAAMAKwA6AFMAvQCHAK4BhwDQAYcACgKHADUCwQBcAgAAAAAAPERvd25s
+b2FkQXN5bmM+ZF9fMAA8PnVfXzEAQ29uZmlndXJlZFRhc2tBd2FpdGFibGVgMQBUYXNrYDEASHR0
+cEhlYWRlclZhbHVlQ29sbGVjdGlvbmAxAEFzeW5jVGFza01ldGhvZEJ1aWxkZXJgMQBJbnQzMgA8
+aHR0cD41X18yADw+dV9fMgA8cmVzcG9uc2U+NV9fMwA8PnVfXzMAPGNvbnRlbnRTdHJlYW0+NV9f
+NAA8PnVfXzQAPGZpbGVTdHJlYW0+NV9fNQA8U2FmZVJlYWRTbmlwcGV0QXN5bmM+ZF9fNQA8TW9k
+dWxlPgBTeXN0ZW0uSU8ATWljcm9zb2Z0LlNxbFNlcnZlci5NYW5hZ2VkRFRTAHZhbHVlX18AbXNj
+b3JsaWIARG93bmxvYWRBc3luYwBSZWFkQXNTdHJpbmdBc3luYwBSZWFkQXNTdHJlYW1Bc3luYwBD
+b3B5VG9Bc3luYwBHZXRBc3luYwBTYWZlUmVhZFNuaXBwZXRBc3luYwBTVF83N2NjOTRjNzUwM2M0
+MTAzYjg0YWY2NGEwNzlmOWQxZABQYXJzZUFkZABBd2FpdFVuc2FmZU9uQ29tcGxldGVkAGdldF9J
+c0NvbXBsZXRlZABJc051bGxPcldoaXRlU3BhY2UAZGVmYXVsdEluc3RhbmNlAGdldF9TdGF0dXND
+b2RlAEh0dHBTdGF0dXNDb2RlAGdldF9Jc1N1Y2Nlc3NTdGF0dXNDb2RlAEZpbGVNb2RlAGdldF9N
+ZXNzYWdlAEh0dHBSZXNwb25zZU1lc3NhZ2UAbWVzc2FnZQBWYXJpYWJsZQBJRGlzcG9zYWJsZQBD
+b25maWd1cmVkVGFza0F3YWl0YWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRs
+ZQB0aXRsZQBHZXREaXJlY3RvcnlOYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlJ1bnRpbWUA
+SUFzeW5jU3RhdGVNYWNoaW5lAFNldFN0YXRlTWFjaGluZQBzdGF0ZU1hY2hpbmUAVmFsdWVUeXBl
+AFNlY3VyaXR5UHJvdG9jb2xUeXBlAEZpbGVTaGFyZQBGYWlsdXJlAGdldF9DdWx0dXJlAHNldF9D
+dWx0dXJlAHJlc291cmNlQ3VsdHVyZQBWU1RBUlRTY3JpcHRPYmplY3RNb2RlbEJhc2UAQXBwbGlj
+YXRpb25TZXR0aW5nc0Jhc2UAZ2V0X1JlYXNvblBocmFzZQByZXNwb25zZQBEaXNwb3NlAENyZWF0
+ZQBFZGl0b3JCcm93c2FibGVTdGF0ZQA8PjFfX3N0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmli
+dXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0
+b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3luY1N0YXRlTWFj
+aGluZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtB
+dHRyaWJ1dGUARGVidWdnZXJIaWRkZW5BdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0
+cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9u
+c0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRy
+aWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0
+dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBnZXRfVmFsdWUAUHJvZHVjdElu
+Zm9IZWFkZXJWYWx1ZQBNZWRpYVR5cGVXaXRoUXVhbGl0eUhlYWRlclZhbHVlAHZhbHVlAHNldF9F
+eHBlY3QxMDBDb250aW51ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAFRvU3RyaW5nAFN1YnN0
+cmluZwBkb3dubG9hZFBhdGgAZ2V0X0xlbmd0aABnZXRfVGFzawBNaWNyb3NvZnQuU3FsU2VydmVy
+LlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBTY3Jp
+cHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU1RfNzdjYzk0Yzc1MDNjNDEwM2I4
+NGFmNjRhMDc5ZjlkMWQuZGxsAHNldF9TZWN1cml0eVByb3RvY29sAHVybABGaWxlU3RyZWFtAGdl
+dF9JdGVtAFN5c3RlbQBFbnVtAHJlc291cmNlTWFuAFRpbWVTcGFuAFNjcmlwdE1haW4ARmlyZUlu
+Zm9ybWF0aW9uAExvZ0luZm9ybWF0aW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9i
+YWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEh0dHBDb21wbGV0aW9uT3B0aW9uAFNldEV4Y2Vw
+dGlvbgBBcmd1bWVudEV4Y2VwdGlvbgBIdHRwUmVxdWVzdEV4Y2VwdGlvbgBDdWx0dXJlSW5mbwBE
+aXJlY3RvcnlJbmZvAFN5c3RlbS5OZXQuSHR0cABDbGVhcgBFY2JIdHRwRG93bmxvYWRlcgBBc3lu
+Y1Rhc2tNZXRob2RCdWlsZGVyADw+dF9fYnVpbGRlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAFNlcnZp
+Y2VQb2ludE1hbmFnZXIARXZlbnRzT2JqZWN0V3JhcHBlcgBDb25maWd1cmVkVGFza0F3YWl0ZXIA
+R2V0QXdhaXRlcgBGaXJlRXJyb3IALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBGcm9t
+U2Vjb25kcwBTeXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMA
+U1RfNzdjYzk0Yzc1MDNjNDEwM2I4NGFmNjRhMDc5ZjlkMWQuUHJvcGVydGllcy5SZXNvdXJjZXMu
+cmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNUXzc3Y2M5NGM3NTAzYzQxMDNiODRhZjY0YTA3OWY5
+ZDFkLlByb3BlcnRpZXMAZ2V0X1ZhcmlhYmxlcwBTZXR0aW5ncwBTeXN0ZW0uVGhyZWFkaW5nLlRh
+c2tzAFN5c3RlbS5OZXQuSHR0cC5IZWFkZXJzAEh0dHBSZXF1ZXN0SGVhZGVycwBnZXRfRGVmYXVs
+dFJlcXVlc3RIZWFkZXJzAEZpbGVBY2Nlc3MAU3VjY2VzcwBnZXRfRHRzAFNjcmlwdFJlc3VsdHMA
+Z2V0X0V2ZW50cwBFbnN1cmVUYXJnZXREaXJlY3RvcnlFeGlzdHMAVmFsaWRhdGVJbnB1dHMAQ29u
+Y2F0AE9iamVjdABTeXN0ZW0uTmV0AENvbmZpZ3VyZUF3YWl0AGdldF9EZWZhdWx0AHNldF9UYXNr
+UmVzdWx0AEdldFJlc3VsdABTZXRSZXN1bHQAZ2V0X1VzZXJBZ2VudABDcmVhdGVIdHRwQ2xpZW50
+AGdldF9Db250ZW50AEh0dHBDb250ZW50AGdldF9BY2NlcHQAU3RhcnQAQ29udmVydABzZXRfVGlt
+ZW91dABNb3ZlTmV4dABnZXRfQXNzZW1ibHkAQ3JlYXRlRGlyZWN0b3J5AENvbmZpZ3VyZVNlY3Vy
+aXR5AElzTnVsbE9yRW1wdHkAADVMAGUAIABwAGEAcgBhAG0A6AB0AHIAZQAgAHUAcgBsACAAZQBz
+AHQAIAB2AGkAZABlAC4AAUdMAGUAIABwAGEAcgBhAG0A6AB0AHIAZQAgAGQAbwB3AG4AbABvAGEA
+ZABQAGEAdABoACAAZQBzAHQAIAB2AGkAZABlAC4AARF0AGUAeAB0AC8AYwBzAHYAABV0AGUAeAB0
+AC8AcABsAGEAaQBuAAAnUwBTAEkAUwAtAFMAYwByAGkAcAB0AFQAYQBzAGsALwAxAC4AMAABE1UA
+cwBlAHIAOgA6AFUAcgBsAAAlVQBzAGUAcgA6ADoARABvAHcAbgBsAG8AYQBkAFAAYQB0AGgAACFE
+AG8AdwBuAGwAbwBhAGQAIABFAEMAQgAgAEMAUwBWAAA1RADpAGIAdQB0ACAAZAB1ACAAdADpAGwA
+6QBjAGgAYQByAGcAZQBtAGUAbgB0ACAAOgAgAAFxUwBUAF8ANwA3AGMAYwA5ADQAYwA3ADUAMAAz
+AGMANAAxADAAMwBiADgANABhAGYANgA0AGEAMAA3ADkAZgA5AGQAMQBkAC4AUAByAG8AcABlAHIA
+dABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAALSABUAFQAUAAgAAAFIAAoAAAPKQAuACAAVQBS
+AEwAPQAAKS4AIABSAOkAcABvAG4AcwBlACAAKABlAHgAdAByAGEAaQB0ACkAPQABDTwAdgBpAGQA
+ZQA+AAAHLgAuAC4AAD88AGkAbQBwAG8AcwBzAGkAYgBsAGUAIABkAGUAIABsAGkAcgBlACAAbABl
+ACAAYwBvAG4AdABlAG4AdQA+AAAAAAChrU/NZpD3S75Kz8L127MUAAQgAQEIAyAAAQUgAQEREQQg
+AQEOBSABARI5BSABARJZBiABARGAoQQHAREYBAAAEXUHMAEBARAeAAQKAREYBCAAEkEEAAECDgYA
+AQERgLkEAAEBAgMHAQ4EAAEODgYAARKAxQ4GAAERgMkNBiABARGAyQUgABKAzQogABUSgNEBEoDV
+CBUSgNEBEoDVBSABARMACiAAFRKA0QESgNkIFRKA0QESgNkEBwERHAYVEYCBAQ4JAAAVEYCBARMA
+BAoBERwIIAAVEkkBEwAJBwQODhGAjRJxBSAAEoDdBSAAEoDhBiABEoDlHAMgABwEAAEOHAUAAg4O
+DgUgABGAjQUgABKA7QMgAA4CBg4IIAUCCA4ODggDBwECCiAGAQgODg4IEAIHAAESORGA8QUgABKA
+9QcgAgEOEoD1MQcOCBJNFRFhARJNFRFdARJNDhURYQEOFRFdAQ4IEmUVEWEBEmUVEV0BEmURbRFp
+EnEMIAIVEkkBEk0OEYD5BhUSSQESTQkgARURXQETAAIGFRFdARJNCCAAFRFhARMABhURYQESTQMg
+AAIKMAICARAeABAeAQoKAhURYQESTREYBCAAEwAFFRJJAQ4FFRFdAQ4FFRFhAQ4JCgIVEWEBDhEY
+BSAAEYD9BQABDh0OBSAAEoEJCCAAFRJJARJlBhUSSQESZQYVEV0BEmUGFRFhARJlCgoCFRFhARJl
+ERgNIAQBDhGBDRGBERGBFQYgARJBEmUFIAERaQIEIAARbQYKAhFtERgFIAEBEnERBwYIDg4VEWEB
+DhURXQEOEnEHIAAVEkkBDgkKAhURYQEOERwDIAAIBSACDggICLd6XFYZNOCJCLA/X38R1Qo6CImE
+Xc2AgMyRBAAAAAAEAQAAAAQGEoCZBAYSgJ0DBhIUAgYIAwYRdQMGEkUDBhJNBwYVEWEBEk0GBhUR
+YQEOAwYSZQcGFRFhARJlAwYSeQMGEW0HBhURgIEBDgMGESAGIAISQQ4OBQACAQ4OAwAAAQQAAQEO
+BAAAEkUJAAEVEkkBDhJNBSACAQ4OBQAAEoCZBQAAEoCdBgABARKAnQQAABIUBQgAEoCZBQgAEoCd
+BAgAEhQIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEA
+I1NUXzc3Y2M5NGM3NTAzYzQxMDNiODRhZjY0YTA3OWY5ZDFkAAAFAQAAAAAWAQARQ29weXJpZ2h0
+IEAgIDIwMjYAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlz
+cGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43TgEASVNUXzc3Y2M5NGM3NTAzYzQxMDNiODRhZjY0
+YTA3OWY5ZDFkLkVjYkh0dHBEb3dubG9hZGVyKzxEb3dubG9hZEFzeW5jPmRfXzAAAFUBAFBTVF83
+N2NjOTRjNzUwM2M0MTAzYjg0YWY2NGEwNzlmOWQxZC5FY2JIdHRwRG93bmxvYWRlcis8U2FmZVJl
+YWRTbmlwcGV0QXN5bmM+ZF9fNQAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5S
+ZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
+LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGlt
+ZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAADQRAAAAAAAAAAAAADqRAAAACAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAA3EQAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAA
+AAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAQAAAA
+GAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAAAFhgAAAa
+BAAAAAAAAAAAAAAaBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAAvQTv/gAA
+AQAAAAEAkk1gJQAAAQCSTWAlPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAABAFYAYQBy
+AEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAAAAAAALAE
+egMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAVgMAAAEAMAAwADAAMAAwADQAYgAw
+AAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBuAHkATgBhAG0A
+ZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwA3
+ADcAYwBjADkANABjADcANQAwADMAYwA0ADEAMAAzAGIAOAA0AGEAZgA2ADQAYQAwADcAOQBmADkA
+ZAAxAGQAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4AOQA1ADYAOAAu
+ADEAOQA4ADUAOAAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAFQAXwA3ADcA
+YwBjADkANABjADcANQAwADMAYwA0ADEAMAAzAGIAOAA0AGEAZgA2ADQAYQAwADcAOQBmADkAZAAx
+AGQALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkA
+cgBpAGcAaAB0ACAAQAAgACAAMgAwADIANgAAACoAAQABAEwAZQBnAGEAbABUAHIAYQBkAGUAbQBh
+AHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYAaQBsAGUAbgBhAG0AZQAAAFMA
+VABfADcANwBjAGMAOQA0AGMANwA1ADAAMwBjADQAMQAwADMAYgA4ADQAYQBmADYANABhADAANwA5
+AGYAOQBkADEAZAAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBlAAAAAABTAFQA
+XwA3ADcAYwBjADkANABjADcANQAwADMAYwA0ADEAMAAzAGIAOAA0AGEAZgA2ADQAYQAwADcAOQBm
+ADkAZAAxAGQAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADkA
+NQA2ADgALgAxADkAOAA1ADgAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBv
+AG4AAAAxAC4AMAAuADkANQA2ADgALgAxADkAOAA1ADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAMAAAA/DQAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{36339CB1-6500-4D56-A27F-7D7DB20B9A9F}"
+      DTS:EvalOp="3"
+      DTS:Expression="@[User::SeriesExist] == false"
+      DTS:From="Package\SQL_Check_SeriesRef_Exists"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\ST_Download_ECB_SeriesKeyRef_CSV" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2784E70-E33F-41DE-83B3-2CEBD05E0AA8}"
+      DTS:From="Package\ST_Download_ECB_SeriesKeyRef_CSV"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_Load_Currency_Series_Ref" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{990BD5A2-70DD-4AEB-996B-076F8823FE52}"
+      DTS:From="Package\DFT_Load_Currency_Series_Ref"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL_Seed_ExchangeRateSeries" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="242,42"
+          Id="Package\DFT_Load_Currency_Series_Ref"
+          TopLeft="241.428571428572,433.833333333333" />
+        <NodeLayout
+          Size="228,42"
+          Id="Package\SQL_Check_SeriesRef_Exists"
+          TopLeft="252.428563679968,70.8333333333333" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\SQL_Seed_ExchangeRateSeries"
+          TopLeft="243.428571428572,539.857142857143" />
+        <NodeLayout
+          Size="279,42"
+          Id="Package\ST_Download_ECB_SeriesKeyRef_CSV"
+          TopLeft="208.428571428572,262.833333333333" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="366.428563679968,112.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-18.499992251396,150"
+              Start="0,0"
+              End="-18.499992251396,142.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.9999999999998" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,70.9999999999998"
+                    Point2="0,74.9999999999998"
+                    Point3="-4,74.9999999999998" />
+                  <mssgle:LineSegment
+                    End="-14.499992251396,74.9999999999998" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.499992251396,74.9999999999998"
+                    Point2="-18.499992251396,74.9999999999998"
+                    Point3="-18.499992251396,78.9999999999998" />
+                  <mssgle:LineSegment
+                    End="-18.499992251396,142.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.249996125698,79.9999999999998,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="347.928571428572,304.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="14.5,129"
+              Start="0,0"
+              End="14.5,121.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.5"
+                    Point2="0,64.5"
+                    Point3="4,64.5" />
+                  <mssgle:LineSegment
+                    End="10.5,64.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,64.5"
+                    Point2="14.5,64.5"
+                    Point3="14.5,68.5" />
+                  <mssgle:LineSegment
+                    End="14.5,121.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="363.428571428572,475.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,64.0238095238099"
+              Start="0,0"
+              End="0,56.5238095238099">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.5238095238099" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text=" Contrôle d’existence des données de référence"
+          ParentId="Package"
+          FontInfo="{x:Null}"
+          Size="280,40"
+          Id="e8fe981b-e353-4cfc-8329-4042e7f03e86"
+          TopLeft="81.4285714285714,114.633332878748" />
+        <AnnotationLayout
+          Text="Objectif du package&#xA; Ce package assure le chargement de la table de référence des clés de séries des devises contre l'euro disponibles sur l'API ECB avec &quot;D..EUR.SP00.A&quot;&#xA;&#xA;Principe de fonctionnement&#xA;  1. Vérifie si les données de référence des devises existent déjà en base.&#xA;  2. Si nécessaire, télécharge le fichier CSV de référence depuis la source officielle ECB.&#xA;  3. Intègre les données CSV dans la base SQL Server via un Data Flow dédié.&#xA;  4. Intègre les devises configurées par défaut dans la table de paramétrage (seed)&#xA;&#xA;Garanties fonctionnelles&#xA;- Unicité des devises par code ISO.&#xA;- Données de référence cohérentes et exploitables (libellés des devises)&#xA;&#xA;Finalité&#xA; Garantir la disponibilité et la cohérence des devises utilisées par les traitements de taux de change en aval.&#xA; Paramétrer des devises par défaut après l'ingestion du référenciel et avant le 1er appel journalier vers l'API ECB.&#xA;&#xA;Remarque&#xA; Ce package est idempotent : il peut être relancé sans provoquer d’incohérence fonctionnelle.&#xA;"
+          ParentId="Package"
+          FontInfo="{x:Null}"
+          Size="813,343"
+          Id="f12ac6d5-bf3e-4739-93b9-50c1cd4424fb"
+          TopLeft="514.428571428571,0" />
+        <AnnotationLayout
+          Text="Téléchargement conditionnel du référentiel&#xA;sur API ECB"
+          ParentId="Package"
+          FontInfo="{x:Null}"
+          Size="257,56"
+          Id="4b3d950f-2a80-436e-90ab-aef94ffd0edf"
+          TopLeft="25.4285714285714,312.833333333333" />
+        <AnnotationLayout
+          Text="Chargement des devises de référence contre l'euro&#xA;"
+          ParentId="Package"
+          FontInfo="{x:Null}"
+          Size="298,56"
+          Id="009d9d80-a552-4495-ad86-e8619acf56ee"
+          TopLeft="33.4285714285714,474.833333333333" />
+        <AnnotationLayout
+          Text="Seed (idempotent) des séries suivies dans la table de paramétrage après chargement du référentiel ECB (CiF)&#xA;"
+          ParentId="Package"
+          FontInfo="{x:Null}"
+          Size="602,56"
+          Id="f373efc8-4381-4d79-8448-4cd77307c8cc"
+          TopLeft="45,588.571428571428" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Load_Currency_Series_Ref">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="249,42"
+          Id="Package\DFT_Load_Currency_Series_Ref\SRC_SeriesKeyRef_to_EUR_CSV"
+          TopLeft="131,54" />
+        <NodeLayout
+          Size="308,42"
+          Id="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref"
+          TopLeft="150,317" />
+        <EdgeLayout
+          Id="Package\DFT_Load_Currency_Series_Ref.Paths[Sortie de source de fichier plat]"
+          TopLeft="254.75,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="0,221"
+              Start="0,0"
+              End="0,213.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,213.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Objectif du Data Flow&#xA;Charger les clés des séries avec leurs métadonnées pour toutes les devises disponibles contre l'euro vers la table exchange_currency_series_ref.&#xA;&#xA;Traitements réalisés&#xA;- Lecture du fichier CSV des clés de séries (source ECB).&#xA;- Mapping direct des colonnes vers le modèle relationnel cible.&#xA;- Insertion des clés de séries avec leurs libellés en base de données.&#xA;&#xA;Règles fonctionnelles&#xA;- Données chargées pour toutes les séries des devises disponibles contre l'euro&#xA;- Intégrité des types et contraintes sur la colonne currency [A-Z][A-Z][A-Z]&#xA;&#xA;Remarque&#xA;Ce Data Flow est exécuté uniquement si les données de la série cible ne sont pas déjà présentes en base"
+          ParentId="Package\DFT_Load_Currency_Series_Ref"
+          FontInfo="{x:Null}"
+          Size="782,NaN"
+          Id="00304e6b-73ab-43a1-9f8c-bae8f312d100"
+          TopLeft="429.846153846154,37" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Load_Currency_Series_Ref\DEST_Insert_Exchange_Currency_Series_Ref">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

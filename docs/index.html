@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rapports EDA (R) – Taux de change BCE (ECB) – EcbFxExchangeRateBridge" />
+  <title>EcbFxExchangeRateBridge — Rapports EDA</title>
+
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      line-height:1.5;
+      color:#111;
+      background:#fafafa;
+    }
+    .container{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    header{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:baseline;
+      justify-content:space-between;
+      margin-bottom: 18px;
+    }
+    h1{
+      font-size: 20px;
+      margin: 0;
+    }
+    .subtitle{
+      margin: 6px 0 0;
+      color:#555;
+      font-size: 13px;
+    }
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    a{
+      color:#0b5fff;
+      text-decoration:none;
+    }
+    a:hover{ text-decoration:underline; }
+
+    .hero{
+      background:#fff;
+      border:1px solid #e6e6e6;
+      border-radius:10px;
+      padding:16px;
+      margin-bottom: 14px;
+    }
+    .hero h2{
+      margin:0 0 8px;
+      font-size: 16px;
+    }
+    .hero p{
+      margin:0;
+      color:#333;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid #e6e6e6;
+      border-radius:10px;
+      padding:16px;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size: 15px;
+    }
+    .card p{
+      margin:0 0 10px;
+      color:#333;
+      font-size: 13px;
+    }
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin: 0 0 12px;
+      padding: 0;
+      list-style: none;
+      color:#666;
+      font-size: 12px;
+    }
+    .btn{
+      display:inline-block;
+      padding:8px 10px;
+      border:1px solid #d9d9d9;
+      border-radius:8px;
+      background:#f6f6f6;
+      color:#111;
+      font-size: 13px;
+      text-decoration:none;
+    }
+    .btn:hover{
+      background:#ededed;
+      text-decoration:none;
+    }
+
+    footer{
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top:1px solid #e6e6e6;
+      color:#666;
+      font-size: 12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+    }
+
+    @media (max-width: 780px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <div>
+        <h1>EcbFxExchangeRateBridge — GitHub Pages</h1>
+        <p class="subtitle">Rapports EDA (R) &amp; livrables data — taux de change BCE (ECB)</p>
+      </div>
+
+      <nav aria-label="Navigation">
+        <a class="btn" href="https://github.com/sferrer-dev/EcbFxExchangeRateBridge" title="Ouvrir le repository GitHub">Repository</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-label="Présentation">
+      <h2>Rapports d’analyse exploratoire (EDA) — ECB FX</h2>
+      <p>Cette page centralise les livrables HTML générés par le projet <strong>ExchangeRate.EDA</strong>.</p>
+      <p>Les rapports permettent de qualifier la qualité, la complétude et le périmètre des données de change issues de l’API officielle de la BCE.</p>
+    </section>
+
+    <main class="grid" role="main">
+
+      <article class="card">
+        <h3>Rapport 01 — Data Profiling &amp; EDA</h3>
+        <p>Profilage du dataset : structure, valeurs manquantes, statistiques descriptives et éléments d’exploration.</p>
+        <ul class="meta">
+          <li>Profiling</li>
+          <li>Qualité</li>
+          <li>Exploration</li>
+        </ul>
+        <a class="btn" href="./01_Ecb_Exchange_Rate_Profiling_EDA.html">Ouvrir le rapport 01</a>
+      </article>
+
+      <article class="card">
+        <h3>Rapport 02 — Files Overview (EDA &amp; ROCCC)</h3>
+        <p>Synthèse de “readiness” : vue d’ensemble des fichiers, complétude, périmètre temporel et axes ROCCC.</p>
+        <ul class="meta">
+          <li>Overview</li>
+          <li>ROCCC</li>
+          <li>Readiness</li>
+        </ul>
+        <a class="btn" href="./02_Ecb_Exchange_Rate_Files_Overview.html">Ouvrir le rapport 02</a>
+      </article>
+
+      <section class="card">
+        <h3>Notes</h3>
+        <p>La Banque centrale européenne publie les taux de change de référence de l’euro (EUR), généralement mis à jour vers 16h00 CET les jours ouvrés.</p>
+        <p>L’accès aux données s’effectue via le ECB Data Portal, en s’appuyant sur le standard SDMX (Statistical Data and Metadata eXchange).</p>
+         <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          <a class="btn" href="https://data.ecb.europa.eu/help/api/overview">ECB Data portal API Overview</a>
+         </div>
+      </section>
+
+      <section class="card">
+        <h3>Structure générale d’une clé EXR</h3>
+        <p>Une clé EXR permet d’identifier de manière unique chaque série de taux publié.<p>
+        <p>Elle est composée de cinq dimensions. Chaque segment décrit respectivement la fréquence des données, la devise cotée, la devise de référence, le type de taux de change et la nature de la série.</p>
+        <p>FREQ.CURRENCY.CURRENCY_DENOM.EXR_TYPE.EXR_SUFFIX.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          <a class="btn" href="https://data.ecb.europa.eu/help/api/data">ECB Data portal API Data</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>EcbFxExchangeRateBridge — sferrer-dev — GitHub Pages</div>
+    </footer>
+
+  </div>
+</body>
+</html>

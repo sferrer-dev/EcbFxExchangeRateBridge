@@ -1,0 +1,356 @@
+{
+  "info": {
+    "_postman_id": "b666e56f-f581-4ffc-b52b-a67621569a07",
+    "name": "ECB FX Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27178928"
+  },
+  "item": [
+    {
+      "name": "ECB EXR – Daily EUR/USD Exchange Rates (2025)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D.USD.EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "startPeriod",
+              "value": "2025-01-01"
+            },
+            {
+              "key": "endPeriod",
+              "value": "2025-12-31"
+            },
+            {
+              "key": "format",
+              "value": "csvdata"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB EXR – Daily EUR/USD & EUR/CNY Exchange Rates (Full History)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD+CNY.EUR.SP00.A?format=csvdata",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D.USD+CNY.EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "format",
+              "value": "csvdata"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB EXR – Daily EUR/USD Exchange Rates (Full History)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?format=csvdata",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D.USD.EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "format",
+              "value": "csvdata"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB EXR – Daily EUR/CNY Exchange Rates (Full History)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D.CNY.EUR.SP00.A?format=csvdata",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D.CNY.EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "format",
+              "value": "csvdata"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB EXR – Daily EUR/USD Exchange Rates (Date Range)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2025-01-01&endPeriod=2025-12-31&format=csvdata",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D.USD.EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "startPeriod",
+              "value": "2025-01-01"
+            },
+            {
+              "key": "endPeriod",
+              "value": "2025-12-31"
+            },
+            {
+              "key": "format",
+              "value": "csvdata"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB SDMX – Currency Reference Codelist (CL_CURRENCY)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/xml",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/codelist/ECB/CL_CURRENCY",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "codelist",
+            "ECB",
+            "CL_CURRENCY"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB EXR – Available EUR FX Series Keys",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D..EUR.SP00.A?format=csvdata&detail=serieskeysonly",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D..EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "format",
+              "value": "csvdata"
+            },
+            {
+              "key": "detail",
+              "value": "serieskeysonly"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB EXR – EUR FX Series Metadata (No Data)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D..EUR.SP00.A?format=csvdata&detail=nodata",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D..EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "format",
+              "value": "csvdata"
+            },
+            {
+              "key": "detail",
+              "value": "nodata"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ECB EXR – EUR FX Series Metadata (All Currencies, CSV)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://data-api.ecb.europa.eu/service/data/EXR/D..EUR.SP00.A?detail=nodata&format=csvdata",
+          "protocol": "https",
+          "host": [
+            "data-api",
+            "ecb",
+            "europa",
+            "eu"
+          ],
+          "path": [
+            "service",
+            "data",
+            "EXR",
+            "D..EUR.SP00.A"
+          ],
+          "query": [
+            {
+              "key": "detail",
+              "value": "nodata"
+            },
+            {
+              "key": "format",
+              "value": "csvdata"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

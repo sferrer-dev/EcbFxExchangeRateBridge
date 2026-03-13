@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36915.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "ExchangeRate.SSIS", "src\ExchangeRate.SSIS\ExchangeRate.SSIS.dtproj", "{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ExchangeRate.Database", "src\ExchangeRate.Database\ExchangeRate.Database.sqlproj", "{F7F6C370-102A-481B-9064-17BDC03FEE74}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SalesMgmt.Database", "src\SalesMgmt.Database\SalesMgmt.Database.sqlproj", "{56C0EE76-1290-49B1-B014-7DAE47B0B941}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postman", "postman", "{33919949-2AC3-4475-BDAD-7B2048A1CC19}"
+	ProjectSection(SolutionItems) = preProject
+		docs\postman\ecb-fx-data-api.postman_collection.json = docs\postman\ecb-fx-data-api.postman_collection.json
+		docs\postman\README.md = docs\postman\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{A4462ABB-873E-4E55-A7AC-5CA614DA8A15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "runbooks", "runbooks", "{F05EB0D5-9963-490A-8B05-53859EF06B07}"
+	ProjectSection(SolutionItems) = preProject
+		docs\sql\runbooks\verify-ssis-load-and-data-quality.sql = docs\sql\runbooks\verify-ssis-load-and-data-quality.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{59A8355C-6A43-4EDE-838F-3A528944C04E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{E53039DC-4BD8-44A9-9607-B624765E78D0}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\publish-to-public.yml = .github\workflows\publish-to-public.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DEV|Any CPU = DEV|Any CPU
+		DEV|x64 = DEV|x64
+		DEV|x86 = DEV|x86
+		UAT|Any CPU = UAT|Any CPU
+		UAT|x64 = UAT|x64
+		UAT|x86 = UAT|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.DEV|Any CPU.ActiveCfg = DEV
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.DEV|Any CPU.Build.0 = DEV
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.DEV|x64.ActiveCfg = DEV
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.DEV|x64.Build.0 = DEV
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.DEV|x86.ActiveCfg = DEV
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.DEV|x86.Build.0 = DEV
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.UAT|Any CPU.ActiveCfg = UAT
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.UAT|x64.ActiveCfg = DEV
+		{6FCC71E4-AAFA-25EC-1423-F561C0EAEB05}.UAT|x86.ActiveCfg = DEV
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.DEV|Any CPU.ActiveCfg = DEV|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.DEV|Any CPU.Build.0 = DEV|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.DEV|Any CPU.Deploy.0 = DEV|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.DEV|x64.ActiveCfg = DEV|x64
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.DEV|x86.ActiveCfg = DEV|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.DEV|x86.Build.0 = DEV|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|Any CPU.Deploy.0 = UAT|Any CPU
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|x64.ActiveCfg = UAT|x64
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|x64.Build.0 = UAT|x64
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|x64.Deploy.0 = UAT|x64
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|x86.ActiveCfg = UAT|x86
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|x86.Build.0 = UAT|x86
+		{F7F6C370-102A-481B-9064-17BDC03FEE74}.UAT|x86.Deploy.0 = UAT|x86
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.DEV|Any CPU.ActiveCfg = DEV|Any CPU
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.DEV|Any CPU.Build.0 = DEV|Any CPU
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.DEV|x64.ActiveCfg = DEV|x64
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.DEV|x86.ActiveCfg = DEV|Any CPU
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.DEV|x86.Build.0 = DEV|Any CPU
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|Any CPU.Build.0 = UAT|Any CPU
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|Any CPU.Deploy.0 = UAT|Any CPU
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|x64.ActiveCfg = UAT|x64
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|x64.Build.0 = UAT|x64
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|x64.Deploy.0 = UAT|x64
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|x86.ActiveCfg = UAT|x86
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|x86.Build.0 = UAT|x86
+		{56C0EE76-1290-49B1-B014-7DAE47B0B941}.UAT|x86.Deploy.0 = UAT|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{33919949-2AC3-4475-BDAD-7B2048A1CC19} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{A4462ABB-873E-4E55-A7AC-5CA614DA8A15} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F05EB0D5-9963-490A-8B05-53859EF06B07} = {A4462ABB-873E-4E55-A7AC-5CA614DA8A15}
+		{59A8355C-6A43-4EDE-838F-3A528944C04E} = {8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}
+		{E53039DC-4BD8-44A9-9607-B624765E78D0} = {59A8355C-6A43-4EDE-838F-3A528944C04E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8645ED39-47CD-4F29-9DE2-76590ED3861C}
+	EndGlobalSection
+EndGlobal

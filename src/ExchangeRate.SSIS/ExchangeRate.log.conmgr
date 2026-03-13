@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:DelayValidation="True"
+  DTS:ObjectName="ExchangeRate.log"
+  DTS:DTSID="{598BB42F-308B-4F77-A14B-F8FADD202F39}"
+  DTS:CreationName="FILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::pLogsFolder] +  @[$Project::pLogsFileName]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:FileUsageType="1"
+      DTS:ConnectionString="D:\SSIS\Logs\ExchangeRate.log" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
